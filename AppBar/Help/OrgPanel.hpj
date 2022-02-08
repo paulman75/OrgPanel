@@ -1,0 +1,14 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+LCID=0x419 0x0 0x0 ; Russian
+REPORT=Yes
+HLP=OrgPanel.hlp
+
+[FILES]
+OrgPanel.rtf
+
+[MAP]
+dnevnik=2
+notebook=1
+notepad=0

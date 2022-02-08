@@ -1,0 +1,252 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MAINDLG DIALOGEX 0, 0, 354, 210
+STYLE WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU
+CAPTION "Хранитель паролей"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_URL,183,36,155,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOGIN,183,62,74,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASS,271,62,67,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COMMENT,182,133,166,47,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL
+    LTEXT           "Список сайтов",IDC_STATIC,12,25,51,8,0,
+                    WS_EX_TRANSPARENT
+    LTEXT           "Логин",IDC_STATIC,185,53,22,8,0,WS_EX_TRANSPARENT
+    LTEXT           "URL",IDC_STATIC,185,25,16,8,0,WS_EX_TRANSPARENT
+    LTEXT           "Пароль",IDC_STATIC,272,52,26,8,0,WS_EX_TRANSPARENT
+    LTEXT           "Дата изменения",IDC_STATIC,184,90,58,8,0,
+                    WS_EX_TRANSPARENT
+    LTEXT           "Static",IDC_DATE,184,105,124,8,0,WS_EX_TRANSPARENT
+    LTEXT           "Комментарий",IDC_STATIC,184,118,48,8,0,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Выход",IDOK,182,188,50,14
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_NOTOOLTIPS | 
+                    WS_TABSTOP,11,36,162,166,WS_EX_CLIENTEDGE
+END
+
+PASSDLG DIALOG DISCARDABLE  0, 0, 122, 57
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ввод пароля"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PASS,13,16,96,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,7,34,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,65,34,50,14
+    LTEXT           "Пароль",IDC_STATIC,13,3,26,8
+END
+
+MAGICDLG DIALOG DISCARDABLE  0, 0, 276, 130
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Открытые окна IE"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Добавить",IDC_MADD,77,109,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,153,109,50,14
+    LISTBOX         IDC_LIST1,7,7,262,95,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "MAINDLG", DIALOG
+    BEGIN
+        RIGHTMARGIN, 351
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 208
+    END
+
+    "PASSDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 115
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 50
+    END
+
+    "MAGICDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 269
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+MAGIC                   BITMAP  DISCARDABLE     "wiz.bmp"
+ABOUT                   BITMAP  DISCARDABLE     "bitmap1.bmp"
+ADD                     BITMAP  DISCARDABLE     "bitmap2.bmp"
+DEL                     BITMAP  DISCARDABLE     "bmp00001.bmp"
+GOTO                    BITMAP  DISCARDABLE     "bmp00002.bmp"
+BKGND                   BITMAP  DISCARDABLE     "untitled.bmp"
+WEBICON                 BITMAP  DISCARDABLE     "bmp00003.bmp"
+WEBFOLDER               BITMAP  DISCARDABLE     "bmp00004.bmp"
+ADDGROUP                BITMAP  DISCARDABLE     "bmp00005.bmp"
+RENAME                  BITMAP  DISCARDABLE     "bmp00006.bmp"
+MENUNEWSITE             BITMAP  DISCARDABLE     "bmp00007.bmp"
+MENUNEWGROUP            BITMAP  DISCARDABLE     "bmp00008.bmp"
+MENUDEL                 BITMAP  DISCARDABLE     "bmp00009.bmp"
+MENURENAME              BITMAP  DISCARDABLE     "bmp00010.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+MAINICON                ICON    DISCARDABLE     "icon1.ico"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,3,0,17
+ PRODUCTVERSION 3,3,0,17
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", " PM_SOFT\0"
+            VALUE "FileDescription", "Password Keeper\0"
+            VALUE "FileVersion", "3, 3, 0, 17\0"
+            VALUE "InternalName", "PassKeeper\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "PM_SOFT\0"
+            VALUE "OriginalFilename", "PassKeeper.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "  PassKeeper\0"
+            VALUE "ProductVersion", "3, 3, 0, 17\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+DRAGCURSOR              CURSOR  DISCARDABLE     "drag.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+TREEMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Добавить группу",             IDM_ADDGROUP
+        MENUITEM "Добавить сайт",               IDM_ADDSITE
+        MENUITEM SEPARATOR
+        MENUITEM "Переименовать",               IDM_RENAME
+        MENUITEM "Удалить",                     IDM_DEL
+    END
+END
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

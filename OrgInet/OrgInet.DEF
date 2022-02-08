@@ -1,0 +1,10 @@
+LIBRARY   OrgInet
+
+HEAPSIZE  1024
+
+SEGMENTS
+    FIXEDSEG
+
+EXPORTS
+	InetTimeSync
+	InetCheckUpdate

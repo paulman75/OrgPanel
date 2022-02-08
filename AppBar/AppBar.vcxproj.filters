@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{037ce4de-2eb4-4544-8305-054dc2e45342}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6638b7c9-5064-4822-808b-8effb938686f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{d60fbe92-7fce-43b6-bc92-0c6726dc90bc}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BarStruct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BarUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Headers\Bitmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\Classes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\ColorDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTIMER.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Headers\DragList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\FolderSw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Headers\IconList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\MyUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\Shortcut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compon\ToolBar2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitProp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Res\Res.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarStruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarUnit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\Classes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\ColorDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTIMER.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\FolderSw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\general.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\MyUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegUnit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Res\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\Shortcut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sounds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compon\ToolBar2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitProp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bitmap3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bitmap4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bitmap5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bitmap6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bmp00001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bmp00002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bmp00003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bmp00004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\bmp00005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\dd3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\ico00001.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\icon2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\icon5.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\icon6.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\imen.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\logo2.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\main.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\null2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\play1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\pp.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\pp0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\prim.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\rov.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\rova.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Timer01.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\up1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\up1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\vlogo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="vlogo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\Watch02.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Res\zzNSuDF6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Res\32766.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Res\32767.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

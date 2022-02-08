@@ -1,0 +1,77 @@
+LIBRARY   OrgPanel
+
+HEAPSIZE  1024
+
+SEGMENTS
+    FIXEDSEG
+
+EXPORTS
+	DrawBitmap
+	PaintBack
+	FillBackGround
+	DrawTransparentBitmap
+	MessageDlg
+	InputQuery
+	PutOnCenter
+	UsePassword
+	CheckPassword
+	MySound
+	ChangeSoundConfig
+	ExtractFilePath
+	FileExists
+	DirectoryExists
+	ShowAbout
+
+	StartCalendar
+	CreateDateLabel
+	GetDate
+	SetDate
+	ShowDateLabel
+	DeleteAllDateLabels
+	Now
+	mod
+	EncodeDate
+	DateForward
+	DateBefore
+	DayofWeek
+	DateToString
+	DateToStringWithoutYear
+	WeekDayToString
+	MonthToString
+	YearToString
+
+	CreateRichEdit
+	GetRichEditWnd
+	RichEditWndProc
+	SetRichEditText
+	DeleteAllRichEdit
+	AddTextToRichEdit
+	
+	GotoUrl
+	FindInString
+	FindInString2
+	StringCompare
+	ShowBioritm
+	MakeShortName
+	DrawAlignText
+
+	DeleteAllSensorLabels
+	SetSensorCaption
+	ShowSensorLabel
+	CreateSensorLabel
+
+	GetHumanName
+	GetHumanImenDate
+	GetHumanMainImenDate
+	GetNameIndex
+
+	GetDataDir
+	GetModulePath
+	GetBuild
+	TimeSync
+	CheckUpdate
+
+	ReadRegistry
+	WriteStringToReg
+	WriteDWordToReg
+	WriteBinToReg

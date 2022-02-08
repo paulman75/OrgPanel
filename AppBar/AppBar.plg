@@ -1,0 +1,184 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: AppBar - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSP8B68.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib msimg32.lib ../Headers/OrgPanel.lib comdlg32.lib advapi32.lib shell32.lib comctl32.lib ole32.lib winmm.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"../Release/OrgPanel.pdb" /machine:I386 /out:"../Release/OrgPanel.exe" 
+.\Release_Obj\AppBar.obj
+.\Release_Obj\BarStruct.obj
+.\Release_Obj\BarUnit.obj
+.\Release_Obj\Bitmap.obj
+.\Release_Obj\Classes.obj
+.\Release_Obj\ColorDlg.obj
+.\Release_Obj\CTIMER.OBJ
+.\Release_Obj\DragList.obj
+.\Release_Obj\FolderSw.obj
+.\Release_Obj\IconList.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\MyUtils.obj
+.\Release_Obj\Option.obj
+.\Release_Obj\RegUnit.obj
+.\Release_Obj\Shortcut.obj
+.\Release_Obj\Sounds.obj
+.\Release_Obj\ToolBar2.obj
+.\Release_Obj\UnitProp.obj
+.\Release_Obj\Res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSP8B68.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+OrgPanel.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: Diary - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSP8BC6.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winmm.lib winspool.lib ../Headers/OrgPanel.lib comctl32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"../Release/Diary.pdb" /machine:I386 /out:"../Release/Diary.exe" 
+.\Release_Obj\Astro.obj
+.\Release_Obj\Bitmap.obj
+.\Release_Obj\Classes.obj
+.\Release_Obj\DateTime.obj
+.\Release_Obj\Days.obj
+.\Release_Obj\Dela.obj
+.\Release_Obj\DelaList.obj
+.\Release_Obj\Event.obj
+.\Release_Obj\general.obj
+.\Release_Obj\Human.obj
+.\Release_Obj\IconList.obj
+.\Release_Obj\IntEvent.obj
+.\Release_Obj\logger.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\Pages.obj
+.\Release_Obj\Pravos.obj
+.\Release_Obj\Praz.obj
+.\Release_Obj\Print.obj
+.\Release_Obj\ToolBar.obj
+.\Release_Obj\TrayBar.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSP8BC6.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+Diary.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: NoteBook - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSP8C63.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib comctl32.lib ../Headers/Orgpanel.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"../Release/NoteBook.pdb" /machine:I386 /out:"../Release/NoteBook.exe" 
+.\Release_Obj\Column.obj
+.\Release_Obj\DragList.obj
+.\Release_Obj\EditFirm.obj
+.\Release_Obj\EditUnit.obj
+.\Release_Obj\Filter.obj
+.\Release_Obj\Group.obj
+.\Release_Obj\IconList.obj
+.\Release_Obj\ListView.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\MemBit.obj
+.\Release_Obj\mytapi.obj
+.\Release_Obj\OldVers.obj
+.\Release_Obj\Print.obj
+.\Release_Obj\Search.obj
+.\Release_Obj\ToDnev.obj
+.\Release_Obj\ToolBar.obj
+.\Release_Obj\Units.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSP8C63.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+NoteBook.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: NotePad - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSP8CD2.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib ../Headers/OrgPanel.lib comctl32.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"../Release/NotePad.pdb" /machine:I386 /out:"../Release/NotePad.exe" 
+.\Release_Obj\BitMenu.obj
+.\Release_Obj\ExTreeView.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\OldVers.obj
+.\Release_Obj\units.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSP8CD2.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+NotePad.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: OrgInet - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSP8D30.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib wsock32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ../Headers/OrgPanel.lib /nologo /dll /incremental:no /pdb:"../Release/OrgInet.pdb" /machine:I386 /def:".\OrgInet.DEF" /out:"../Release/OrgInet.dll" /implib:"Release_Obj/OrgInet.lib" 
+.\Release_Obj\logger.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\TimeSync.obj
+.\Release_Obj\Update.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSP8D30.tmp"
+<h3>Output Window</h3>
+Linking...
+   Creating library Release_Obj/OrgInet.lib and object Release_Obj/OrgInet.exp
+
+
+
+<h3>Results</h3>
+OrgInet.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: OrgPanel - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+OrgPanel.dll - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: PassKeeper - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+PassKeeper.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: UnitConv - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+UnitConv.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

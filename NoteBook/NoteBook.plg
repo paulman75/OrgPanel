@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: NoteBook - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\paul\LOCALS~1\Temp\RSP22D.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release_Obj/NoteBook.pch" /YX /Fo"Release_Obj/" /Fd"Release_Obj/" /FD /c 
+"C:\NC\Own\OrgPanel\NoteBook\Units.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\paul\LOCALS~1\Temp\RSP22D.tmp" 
+Creating temporary file "D:\DOCUME~1\paul\LOCALS~1\Temp\RSP22E.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib comctl32.lib ../Headers/Orgpanel.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"../Release/NoteBook.pdb" /machine:I386 /out:"../Release/NoteBook.exe" 
+.\Release_Obj\Column.obj
+.\Release_Obj\DragList.obj
+.\Release_Obj\EditFirm.obj
+.\Release_Obj\EditUnit.obj
+.\Release_Obj\Filter.obj
+.\Release_Obj\Group.obj
+.\Release_Obj\IconList.obj
+.\Release_Obj\ListView.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\MemBit.obj
+.\Release_Obj\mytapi.obj
+.\Release_Obj\OldVers.obj
+.\Release_Obj\Print.obj
+.\Release_Obj\Search.obj
+.\Release_Obj\ToDnev.obj
+.\Release_Obj\ToolBar.obj
+.\Release_Obj\Units.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @D:\DOCUME~1\paul\LOCALS~1\Temp\RSP22E.tmp"
+<h3>Output Window</h3>
+Compiling...
+Units.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+NoteBook.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

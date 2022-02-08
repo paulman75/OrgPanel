@@ -1,0 +1,621 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_HEADMENU MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Настроить",                   IDC_HEADOPTION
+        MENUITEM "Скрыть",                      IDC_HEADHIDE
+        POPUP "Сортировка по"
+        BEGIN
+            MENUITEM "Возрастанию",                 IDC_HEADUP
+            MENUITEM "Убыванию",                    IDC_HEADDOWN
+        END
+    END
+END
+
+MAIN MENU DISCARDABLE 
+BEGIN
+    POPUP "Файл"
+    BEGIN
+        MENUITEM "Экспорт в *.txt",             IDC_EXPORT
+        POPUP "Режим"
+        BEGIN
+            MENUITEM "Данные о людях\tCtrl+H",      IDC_HUMANDATA, CHECKED
+            MENUITEM "Данные о организациях\tCtrl+F", IDC_FIRMDATA
+        END
+        MENUITEM "Настройка печати",            IDC_PRINTDLG
+        MENUITEM SEPARATOR
+        MENUITEM "Выход\tAlt+X",                IDC_EXIT
+    END
+    POPUP "Данные"
+    BEGIN
+        MENUITEM "Добавить запись\tCtrl+N",     IDC_ADDNOTE
+        MENUITEM "Удалить\tCtrl+D",             IDC_DELETE
+        MENUITEM "Изменить\tEnter",             IDC_CHANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Настроить вид\tCtrl+O",       IDC_HEADOPTION
+        MENUITEM "Поиск\tCtrl+F",               IDC_SEARCH
+    END
+    POPUP "Действие"
+    BEGIN
+        MENUITEM "Позвонить домой\tCtrl+R",     IDC_HOMERING
+        MENUITEM "Позвонить на работу\tCtrl+W", IDC_WORKRING
+        MENUITEM "Отправить письмо\tCtrl+S",    IDC_SENDEMAIL
+        MENUITEM "Домашняя страничка\tCtrl+H",  IDC_HOMEPAGE
+        MENUITEM SEPARATOR
+        MENUITEM "Биоритмы\tCtrl+B",            IDC_BIO
+        MENUITEM "Распечатать",                 IDC_PRINT
+    END
+    POPUP "?"
+    BEGIN
+        MENUITEM "Помощь\tF1",                  IDHELP
+        MENUITEM "О программе\tF10",            IDC_ABOUT
+    END
+END
+
+ACTMENU MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Позвонить домой",             IDC_HOMERING
+        MENUITEM "Позвонить на работу",         IDC_WORKRING
+        MENUITEM "Отправить письмо",            IDC_SENDEMAIL
+        MENUITEM "Домашная страничка",          IDC_HOMEPAGE
+        MENUITEM SEPARATOR
+        MENUITEM "Биоритмы",                    IDC_BIO
+        MENUITEM "Распечатать",                 IDC_PRINT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+BDAY                    BITMAP  DISCARDABLE     "bitmap1.bmp"
+ADDHUMAN                BITMAP  DISCARDABLE     "bmp00002.bmp"
+ADDFIRM                 BITMAP  DISCARDABLE     "bmp00003.bmp"
+DELETE                  BITMAP  DISCARDABLE     "bmp00004.bmp"
+CHANGE                  BITMAP  DISCARDABLE     "bmp00005.bmp"
+SEARCH                  BITMAP  DISCARDABLE     "bmp00006.bmp"
+MODE                    BITMAP  DISCARDABLE     "bmp00007.bmp"
+ACT                     BITMAP  DISCARDABLE     "bmp00008.bmp"
+IMEN                    BITMAP  DISCARDABLE     "imen1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_BOYICON             ICON    DISCARDABLE     "boy.ico"
+MAINICON                ICON    DISCARDABLE     "NOTE15.ICO"
+IDI_GIRLICON            ICON    DISCARDABLE     "girl.ico"
+IDI_GMAN                ICON    DISCARDABLE     "gman.ico"
+IDI_GWOMAN              ICON    DISCARDABLE     "gwoman.ico"
+IDI_NO                  ICON    DISCARDABLE     "no.ico"
+IDI_WOMAN               ICON    DISCARDABLE     "woman.ico"
+IDI_MAN                 ICON    DISCARDABLE     "man.ico"
+IDI_ADDRESS             ICON    DISCARDABLE     "ad.ico"
+IDI_WORK                ICON    DISCARDABLE     "work.ico"
+IDI_SOTOV               ICON    DISCARDABLE     "pp.ico"
+IDI_STONE               ICON    DISCARDABLE     "l.ico"
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+IDI_ICON2               ICON    DISCARDABLE     "icon2.ico"
+IDI_ICONGROUP           ICON    DISCARDABLE     "icon3.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+COLOPT DIALOG DISCARDABLE  0, 0, 123, 127
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Настройка"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,36,111,50,14
+    CTEXT           "Можно изменять порядок",IDC_STATIC1,7,1,109,8
+    CTEXT           "и видимость полей",IDC_STATIC2,7,10,109,8
+    LISTBOX         IDC_LIST1,7,21,109,85,LBS_SORT | LBS_OWNERDRAWVARIABLE | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+UNITPROP DIALOG DISCARDABLE  0, 0, 317, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Свойства"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,110,181,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,175,181,50,14
+    CONTROL         "Tab1",IDC_TAB1,"SysTabControl32",WS_TABSTOP,5,3,305,174
+END
+
+INTDIA0 DIALOGEX 10, 20, 293, 147
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT3,64,37,67,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT1,65,63,67,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,65,90,67,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,159,44,118,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,159,75,118,34,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    COMBOBOX        IDC_COMBOSEX,203,121,54,42,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Имя:",IDC_STATIC,35,66,18,8
+    LTEXT           "Фамилия:",IDC_STATIC,20,40,36,8
+    LTEXT           "Отчество:",IDC_STATIC,20,92,37,8
+    LTEXT           "Пол:",IDC_STATIC,179,122,16,8
+    CTEXT           "Дата рождения",IDC_STATICDATA,25,119,54,8
+    CTEXT           "Супруг(а):",IDC_STATICWIFE,195,33,41,8
+    GROUPBOX        "ФИО",IDC_STATIC,7,25,137,90
+    LTEXT           "Дети:",IDC_STATIC,203,63,20,8
+    GROUPBOX        "Семья",IDC_STATIC,153,25,133,90
+    ICON            IDI_GIRLICON,IDC_STATICGIRL,8,2,20,20
+    ICON            IDI_BOYICON,IDC_STATICBOY,8,2,20,20
+    ICON            IDI_GMAN,IDC_STATICGMAN,8,2,20,20
+    ICON            IDI_GWOMAN,IDC_STATICGWOMAN,8,2,20,20
+    ICON            IDI_MAN,IDC_STATICMAN,8,2,20,20
+    ICON            IDI_WOMAN,IDC_STATICWOMAN,8,2,20,20
+    ICON            IDI_NO,IDC_STATICNO,8,2,20,20
+    LTEXT           "Именины",IDC_STATICIMEN,109,119,31,8
+END
+
+INTDIA1 DIALOGEX 10, 20, 294, 146
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,43,13,95,46,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    EDITTEXT        IDC_EDIT2,43,66,95,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,43,85,95,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,43,105,95,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,43,124,95,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,230,10,57,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,222,29,65,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,201,48,86,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT9,200,67,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT10,200,86,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT11,200,105,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT12,199,124,88,14,ES_AUTOHSCROLL
+    LTEXT           "Адрес:",IDC_STATIC,11,18,24,8
+    LTEXT           "Город:",IDC_STATIC,11,70,23,8
+    LTEXT           "Страна:",IDC_STATIC,9,89,27,8
+    GROUPBOX        "Почтовый адрес",IDC_STATIC,3,0,142,143
+    LTEXT           "Область:",IDC_STATIC,9,108,32,8
+    LTEXT           "Индекс:",IDC_STATIC,11,127,28,8
+    GROUPBOX        "Способ связи",IDC_STATIC,150,0,140,143
+    LTEXT           "Домашний телефон:",IDC_STATIC,155,13,70,8
+    LTEXT           "Мобильный:",IDC_STATIC,155,32,63,8
+    LTEXT           "Пейджер:",IDC_STATIC,155,51,34,8
+    LTEXT           "Факс:",IDC_STATIC,155,70,22,8
+    LTEXT           "E-Mail:",IDC_STATIC,155,89,22,8
+    LTEXT           "Home Page:",IDC_STATIC,155,108,40,8
+    LTEXT           "ICQ:",IDC_STATIC,155,127,15,8
+    ICON            IDI_ADDRESS,IDC_STATIC,13,35,20,20
+END
+
+INTDIA2 DIALOGEX 10, 20, 293, 147
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,55,50,77,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO1,135,17,119,56,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT3,163,50,92,14,ES_AUTOHSCROLL
+    LTEXT           "Организация:",IDC_STATIC,81,20,48,8
+    LTEXT           "Рабочий телефон:",IDC_STATIC,61,36,62,8
+    LTEXT           "Должность:",IDC_STATIC,184,36,42,8
+    GROUPBOX        "Работа",IDC_STATIC,12,5,276,65
+    EDITTEXT        IDC_EDIT4,12,99,275,45,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    LTEXT           "Примечания:",IDC_STATIC,14,87,45,8
+    ICON            IDI_WORK,IDC_STATIC,21,19,20,20
+    LTEXT           "Группа:",IDC_STATIC,14,75,28,8
+    LTEXT           "Static",IDC_GROUP,66,75,173,8
+    PUSHBUTTON      "...",IDC_BUTGROUP,45,74,13,11
+END
+
+INTDIA3 DIALOGEX 10, 20, 293, 147
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT2,4,24,139,45,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    EDITTEXT        IDC_EDIT3,150,24,141,45,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | WS_BORDER | 
+                    WS_TABSTOP,7,81,221,58
+    PUSHBUTTON      "Добавить",IDC_BUTTON1,235,93,50,14
+    PUSHBUTTON      """Уволить""",IDC_BUTTON2,235,114,50,14
+    ICON            IDI_SOTOV,IDC_STATIC,6,2,20,20
+    LTEXT           "Название:",IDC_STATIC,47,12,36,8
+    LTEXT           "Описание:",IDC_STATIC,186,13,36,8
+    GROUPBOX        "Сотрудники",IDC_STATIC,4,71,288,73
+END
+
+INTDIA4 DIALOGEX 10, 20, 293, 147
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    LTEXT           "Адрес:",-1,11,18,24,8
+    EDITTEXT        IDC_EDIT1,43,13,95,46,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    LTEXT           "Город:",-1,11,70,23,8
+    LTEXT           "Страна:",-1,9,89,27,8
+    GROUPBOX        "Почтовый адрес",-1,3,0,142,143
+    EDITTEXT        IDC_EDIT2,43,66,95,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,43,85,95,14,ES_AUTOHSCROLL
+    LTEXT           "Область:",-1,9,108,32,8
+    EDITTEXT        IDC_EDIT4,43,105,95,14,ES_AUTOHSCROLL
+    LTEXT           "Индекс:",-1,11,127,28,8
+    EDITTEXT        IDC_EDIT5,43,124,95,14,ES_AUTOHSCROLL
+    GROUPBOX        "Способ связи",-1,150,0,140,143
+    LTEXT           "Телефон №1:",-1,155,25,48,8
+    EDITTEXT        IDC_EDIT6,205,22,79,14,ES_AUTOHSCROLL
+    LTEXT           "Телефон №2:",-1,155,45,48,8
+    LTEXT           "Факс:",-1,155,65,22,8
+    LTEXT           "E-Mail:",-1,155,85,22,8
+    LTEXT           "Home Page:",-1,155,105,40,8
+    EDITTEXT        IDC_EDIT7,205,42,79,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT9,198,62,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT10,198,82,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT11,198,102,87,14,ES_AUTOHSCROLL
+    ICON            IDI_ADDRESS,-1,13,35,20,20
+END
+
+INTDIA5 DIALOGEX 10, 20, 293, 147
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,12,21,275,53,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    EDITTEXT        IDC_EDIT4,12,92,275,50,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    LTEXT           "Примечания:",IDC_STATIC,11,80,45,8
+    LTEXT           "Реквизиты:",IDC_STATIC,33,6,40,8
+    ICON            IDI_STONE,IDC_STATIC,3,0,20,20
+END
+
+DIAL DIALOG DISCARDABLE  0, 0, 153, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Дозвон до абонента"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "Разговор",IDOK,22,57,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,81,57,50,14
+    CTEXT           "После установки связи",IDC_STATIC,23,18,104,8
+    CTEXT           "возмите телефонную трубку",IDC_STATIC,25,29,101,8
+    CTEXT           "и нажмите кнопку ""Разговор""",IDC_STATIC,26,40,99,8
+    LTEXT           "Номер:",IDC_STATIC,30,5,24,8
+    LTEXT           "Static",IDC_STATICNOMER,61,5,85,8
+    GROUPBOX        "",IDC_STATIC,17,11,116,41
+END
+
+ADDTOFIRM DIALOG DISCARDABLE  0, 0, 186, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Добавление в фирму"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_EDIT1,72,3,77,14,ES_AUTOHSCROLL
+    LISTBOX         IDC_LIST1,38,22,111,78,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,33,114,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,107,114,50,14
+    LTEXT           "Быстрый поиск:",IDC_STATIC,12,6,56,8
+    CTEXT           "Static",IDC_STATICVIEW,43,103,101,8
+END
+
+SEARCH DIALOG DISCARDABLE  0, 0, 340, 202
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Поиск"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_EDIT1,52,11,216,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,52,29,215,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,52,47,216,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT13,52,65,216,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Найти",IDC_BUTTON2,284,31,50,14
+    PUSHBUTTON      "Очистить",IDC_BUTTON1,284,50,50,14
+    PUSHBUTTON      "Закрыть",IDC_BUTTON3,284,69,50,14
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP,
+                    5,90,271,109
+    PUSHBUTTON      "Изменить",IDC_BUTTON4,284,127,50,14,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    PUSHBUTTON      "Перейти",IDC_BUTTON5,284,150,50,14,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    LTEXT           "Имя:",IDC_STATIC1,11,14,33,8
+    GROUPBOX        "",IDC_STATIC,5,1,271,82
+    LTEXT           "E-Mail:",IDC_STATIC,11,32,22,8
+    LTEXT           "Телефон:",IDC_STATIC,11,50,33,8
+    LTEXT           "Другое:",IDC_STATIC,11,68,28,8
+    ICON            IDI_ICON1,IDC_STATIC,298,6,20,20
+END
+
+IMEN DIALOG DISCARDABLE  0, 0, 141, 143
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Именины"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,47,127,50,14
+    LISTBOX         IDC_LIST1,13,42,115,80,LBS_NOINTEGRALHEIGHT | LBS_NOSEL | 
+                    WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Static",IDC_STATICNAME,33,5,105,8
+    CTEXT           "Static",IDC_STATICD,33,17,105,8
+    CTEXT           "Static",IDC_STATICD2,33,29,105,8
+    ICON            IDI_ICON2,IDC_STATIC,10,9,21,20
+END
+
+GROUPDLG DIALOG DISCARDABLE  0, 0, 214, 121
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Группы"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Выбрать",IDOK,41,102,50,14
+    ICON            IDI_ICONGROUP,IDC_STATIC,12,4,21,20
+    LISTBOX         IDC_LIST1,39,4,110,91,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Добавить",IDC_BUTADD,157,40,50,14
+    PUSHBUTTON      "Удалить",IDC_BUTGRDEL,157,80,50,14
+    PUSHBUTTON      "Изменить",IDC_BUTCHANGE,157,60,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,99,102,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "COLOPT", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 116
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 125
+    END
+
+    "UNITPROP", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 310
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 196
+    END
+
+    "INTDIA0", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        VERTGUIDE, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 142
+    END
+
+    "INTDIA1", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 287
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+
+    "INTDIA2", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    "INTDIA3", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    "INTDIA4", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    "INTDIA5", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 140
+    END
+
+    "ADDTOFIRM", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 128
+    END
+
+    "SEARCH", DIALOG
+    BEGIN
+        RIGHTMARGIN, 338
+        TOPMARGIN, 2
+    END
+
+    "IMEN", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 137
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 141
+    END
+
+    "GROUPDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 207
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 116
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,3,0,806
+ PRODUCTVERSION 3,3,0,806
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "PM_SOFT\0"
+            VALUE "FileDescription", "OrgPanel NoteBook\0"
+            VALUE "FileVersion", "3, 3, 0, 806\0"
+            VALUE "InternalName", "NoteBook\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "NoteBook.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "PM_SOFT NoteBook\0"
+            VALUE "ProductVersion", "3, 3, 0, 806\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+ACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    "B",            IDC_BIO,                VIRTKEY, CONTROL, NOINVERT
+    "D",            IDC_DELETE,             VIRTKEY, CONTROL, NOINVERT
+    "F",            IDC_FIRMDATA,           VIRTKEY, CONTROL, NOINVERT
+    "F",            IDC_SEARCH,             VIRTKEY, CONTROL, NOINVERT
+    "H",            IDC_HUMANDATA,          VIRTKEY, CONTROL, NOINVERT
+    "H",            IDC_HOMEPAGE,           VIRTKEY, CONTROL, NOINVERT
+    "N",            IDC_ADDNOTE,            VIRTKEY, CONTROL, NOINVERT
+    "O",            IDC_HEADOPTION,         VIRTKEY, CONTROL, NOINVERT
+    "R",            IDC_HOMERING,           VIRTKEY, CONTROL, NOINVERT
+    "S",            IDC_SENDEMAIL,          VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      IDC_EXIT,               VIRTKEY, NOINVERT
+    VK_F1,          IDHELP,                 VIRTKEY, NOINVERT
+    VK_F10,         IDC_ABOUT,              VIRTKEY, NOINVERT
+    VK_RETURN,      IDC_CHANGE,             VIRTKEY, NOINVERT
+    "W",            IDC_WORKRING,           VIRTKEY, CONTROL, NOINVERT
+    "X",            IDC_EXIT,               VIRTKEY, ALT, NOINVERT
+END
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,439 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+SKYICON                 ICON    DISCARDABLE     "icon2.ico"
+1MAINICON               ICON    DISCARDABLE     "pp.ico"
+MOONICON0               ICON    DISCARDABLE     "ico00001.ico"
+MOONICON1               ICON    DISCARDABLE     "ico00002.ico"
+MOONICON2               ICON    DISCARDABLE     "ico00003.ico"
+MOONICON3               ICON    DISCARDABLE     "ico00004.ico"
+DELAICON                ICON    DISCARDABLE     "del.ico"
+EVENTICON               ICON    DISCARDABLE     "ico00005.ico"
+ROVICON                 ICON    DISCARDABLE     "ico00006.ico"
+IMENICON                ICON    DISCARDABLE     "ico00007.ico"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,3,0,681
+ PRODUCTVERSION 3,3,0,681
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0"
+        BEGIN
+            VALUE "Comments", "Дневник\0"
+            VALUE "CompanyName", "PM_SOFT\0"
+            VALUE "FileDescription", "Diary\0"
+            VALUE "FileVersion", "3, 3, 0, 681\0"
+            VALUE "InternalName", "Diary\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Diary.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "PM_SOFT Diary\0"
+            VALUE "ProductVersion", "3, 3, 0, 681\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+ADDDELO                 BITMAP  DISCARDABLE     "bitmap1.bmp"
+DELDELO                 BITMAP  DISCARDABLE     "bmp00004.bmp"
+CHDELO                  BITMAP  DISCARDABLE     "bmp00001.bmp"
+ABOUT                   BITMAP  DISCARDABLE     "bmp00003.bmp"
+BACK                    BITMAP  DISCARDABLE     "pp.bmp"
+CAL                     BITMAP  DISCARDABLE     "bmp00005.bmp"
+IDB_BITPRAZ             BITMAP  DISCARDABLE     "bitmap2.bmp"
+IDB_BITDELA             BITMAP  DISCARDABLE     "bitmap4.bmp"
+ADDEVENT                BITMAP  DISCARDABLE     "bmp00006.bmp"
+DELEVENT                BITMAP  DISCARDABLE     "bmp00007.bmp"
+CHEVENT                 BITMAP  DISCARDABLE     "bmp00008.bmp"
+VIEWDNEV                BITMAP  DISCARDABLE     "bmp00009.bmp"
+VIEWDELO                BITMAP  DISCARDABLE     "bmp00010.bmp"
+IDB_BITEVENT            BITMAP  DISCARDABLE     "bmp00011.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "i89.bmp"
+MIN                     BITMAP  DISCARDABLE     "bmp00012.bmp"
+IDB_BITIMEN             BITMAP  DISCARDABLE     "imen2.bmp"
+IDB_BITPRIM             BITMAP  DISCARDABLE     "prim2.bmp"
+IDB_BITROV              BITMAP  DISCARDABLE     "rov2.bmp"
+IDB_BITPRAV             BITMAP  DISCARDABLE     "bmp00002.bmp"
+FACTNO                  BITMAP  DISCARDABLE     "bmp00013.bmp"
+FACTYES                 BITMAP  DISCARDABLE     "bmp00014.bmp"
+ENDOK                   BITMAP  DISCARDABLE     "endok.bmp"
+ENDNO                   BITMAP  DISCARDABLE     "bmp00015.bmp"
+DELOEXEC                BITMAP  DISCARDABLE     "bmp00017.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Сервис"
+    BEGIN
+        MENUITEM "Печать",                      IDC_PRINT
+        MENUITEM "Настройка печати",            IDC_PRINTSETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Биоритмы\tCtrl+B",            IDC_BIO
+        MENUITEM SEPARATOR
+        MENUITEM "Настройка праздников",        IDM_PRAZEDIT
+        MENUITEM "Свернуть\tEsc",               IDC_MIN
+        MENUITEM "Выход\tAlt-X",                IDC_EXIT
+    END
+    POPUP "Дела"
+    BEGIN
+        MENUITEM "Добавить",                    IDC_ADDDELO
+        MENUITEM "Изменить",                    IDC_CHDELO
+        MENUITEM "Удалить",                     IDC_DELDELO
+        MENUITEM SEPARATOR
+        MENUITEM "Выполнено",                   IDC_DELOEXEC
+    END
+    POPUP "События"
+    BEGIN
+        MENUITEM "Добавить",                    IDC_ADDEVENT
+        MENUITEM "Изменить",                    IDC_CHEVENT
+        MENUITEM "Удалить",                     IDC_DELEVENT
+    END
+    POPUP "?"
+    BEGIN
+        MENUITEM "Помощь\tF1",                  IDHELP
+        MENUITEM "О программе\tF10",            IDC_ABOUT
+    END
+END
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Main"
+    BEGIN
+        MENUITEM "Открыть",                     ID_OPENWINDOW
+        MENUITEM "Сводная",                     IDM_SVOD
+        MENUITEM "Выход",                       ID_EXIT
+    END
+END
+
+IDR_MENUDAY MENU DISCARDABLE 
+BEGIN
+    POPUP "DayPopup"
+    BEGIN
+        MENUITEM "Изменить дату",               ID_CHANGEDATE
+        MENUITEM "Выходной день",               ID_ISKDAY
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// MDATA
+//
+
+IDR_PRIM                MDATA   DISCARDABLE     "prim.dat"
+IDR_PRAZ                MDATA   DISCARDABLE     "praz.dat"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+PRINTDIALOG DIALOG DISCARDABLE  0, 0, 156, 127
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Печать"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "Печать",IDOK,18,104,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,85,104,50,14
+    LISTBOX         IDC_LIST1,19,4,115,67,LBS_OWNERDRAWVARIABLE | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "C",IDC_STATIC,7,87,8,8
+    LTEXT           "по",IDC_STATIC,75,87,9,8
+    CONTROL         "Экспорт в текст",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,40,74,71,10
+END
+
+MEMODLG DIALOG DISCARDABLE  0, 0, 283, 164
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Экспорт в текст"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,119,148,50,14
+    EDITTEXT        IDC_EDIT1,7,4,269,140,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+END
+
+EVENTDLG DIALOGEX 0, 0, 165, 189
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Событие"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDITEV,1,70,161,54,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN
+    COMBOBOX        IDC_CBHOUR,73,50,35,72,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CBMIN,118,50,34,91,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CBMIN2,96,138,66,64,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "OK",ID_OK,29,172,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,89,172,50,14
+    LTEXT           "Дата",IDC_STATIC,99,7,18,8
+    LTEXT           "Часы",IDC_STATIC,79,39,20,8
+    LTEXT           "Минуты",IDC_STATIC,120,39,27,8
+    CONTROL         140,IDC_STATIC,"Static",SS_BITMAP,1,1,61,62,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Оповестить",IDC_STATIC,105,127,41,8
+    GROUPBOX        "Периодичность",IDC_STATIC,1,127,88,42
+    CONTROL         "Кроме выходных",IDC_CHHOL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,154,73,10
+    COMBOBOX        IDC_CBPERIOD,7,138,72,75,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+ONEVENTDLG DIALOG DISCARDABLE  0, 0, 186, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Оповещение"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Выход",IDCANCEL,134,129,50,14
+    EDITTEXT        IDC_EDITEV,2,20,182,78,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    LTEXT           "Оповестить еще раз через",IDC_STATIC,49,101,92,8
+    COMBOBOX        IDC_COMBOEV,57,112,74,54,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Static",IDC_STATICEV,41,7,124,8
+    PUSHBUTTON      ">>Следующее",IDC_BUTNEXT,70,129,55,14
+    PUSHBUTTON      "<<Предыдушее",IDC_BUTPREV,2,129,60,14
+END
+
+DELODLG DIALOG DISCARDABLE  0, 0, 215, 182
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Дело"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDITDELOTEXT,9,51,195,59,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "Кроме выходных",IDC_CHDELOHOL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,22,39,73,10
+    CONTROL         "Не оповещать",IDC_RDDELO1,"Button",BS_AUTORADIOBUTTON,
+                    20,124,65,10
+    CONTROL         "Только в первый день",IDC_RDDELO2,"Button",
+                    BS_AUTORADIOBUTTON,20,135,92,10
+    CONTROL         "Каждый день",IDC_RDDELO3,"Button",BS_AUTORADIOBUTTON,20,
+                    146,61,10
+    COMBOBOX        IDC_CBDELOHOUR,122,143,33,57,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CBDELOMIN,165,143,33,59,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,56,164,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,122,164,50,14
+    LTEXT           "Дата начала",IDC_STATIC,21,7,44,8
+    LTEXT           "Дата окончания (планируемая)",IDC_STATIC,21,17,106,8
+    LTEXT           "Дата окончания (фактическая)",IDC_STATIC,21,28,106,8
+    CONTROL         118,IDC_STATIC,"Static",SS_BITMAP,2,2,20,20
+    GROUPBOX        "Оповещение",IDC_STATIC,9,112,196,50
+    LTEXT           "Час",IDC_STATIC,129,133,14,8
+    LTEXT           "Минута",IDC_STATIC,168,132,26,8
+END
+
+MYPRAZDLG DIALOGEX 0, 0, 197, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Праздники"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LIST1,7,20,183,120,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Добавить",IDC_BUTPRADD,7,145,50,14
+    PUSHBUTTON      "Удалить",IDC_BUTPRDEL,140,145,50,14
+    PUSHBUTTON      "Сохранить и выйти",IDOK,60,145,77,14
+    CONTROL         116,IDC_STATIC,"Static",SS_BITMAP,49,5,16,12,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Список праздников",IDC_STATIC,68,6,68,8
+END
+
+MYPRAZITEMDLG DIALOG DISCARDABLE  0, 0, 172, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Праздник"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PRMESS,7,48,159,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,36,74,50,14
+    PUSHBUTTON      "Отмена",IDCANCEL,93,74,50,14
+    LTEXT           "Дата праздника",IDC_STATIC,55,6,56,8
+    LTEXT           "Текст сообщения",IDC_STATIC,54,37,61,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "PRINTDIALOG", DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 152
+    END
+
+    "MEMODLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 276
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 162
+    END
+
+    "EVENTDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 162
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 186
+    END
+
+    "ONEVENTDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 184
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 143
+    END
+
+    "DELODLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 212
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 178
+    END
+
+    "MYPRAZDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 190
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 159
+    END
+
+    "MYPRAZITEMDLG", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 166
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+ACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    "B",            IDC_BIO,                VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      IDC_MIN,                VIRTKEY, NOINVERT
+    VK_F1,          IDHELP,                 VIRTKEY, NOINVERT
+    VK_F10,         IDC_ABOUT,              VIRTKEY, NOINVERT
+    "X",            IDC_EXIT,               VIRTKEY, ALT, NOINVERT
+END
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

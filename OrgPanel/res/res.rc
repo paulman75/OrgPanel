@@ -1,0 +1,278 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MESSAGEDIALOG DIALOG DISCARDABLE  0, 0, 144, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "Да",IDOK,25,40,44,14
+    PUSHBUTTON      "Нет",IDNO,87,40,40,14
+    LTEXT           "Static",IDC_MESSAGELABEL,39,11,87,8,NOT WS_GROUP
+    LTEXT           "Static",IDC_PARAMLABEL,39,24,89,8
+END
+
+INPUTDIALOG DIALOG DISCARDABLE  0, 0, 148, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_INPEDIT1,16,16,118,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,19,40,38,14
+    PUSHBUTTON      "Отмена",IDCANCEL,72,40,50,14
+    LTEXT           "Static",IDC_MESSAGELABEL,12,4,122,8
+END
+
+PASSWORDDIALOG DIALOG DISCARDABLE  0, 0, 128, 58
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Введите пароль"
+FONT 8, "Tahoma"
+BEGIN
+    EDITTEXT        IDC_PASSEDIT1,16,11,100,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,7,36,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,70,36,50,14
+END
+
+ABOUTBOX DIALOG DISCARDABLE  0, 0, 165, 120
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "О программе"
+FONT 8, "Tahoma"
+BEGIN
+END
+
+CALENDARDIALOG DIALOGEX 20, 20, 131, 120
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE
+CAPTION "Календарь"
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "OK",ID_EXIT,46,101,38,12
+    PUSHBUTTON      "Сегодня",ID_TODAY,2,101,41,12
+    COMBOBOX        IDC_COMBO2,9,12,58,87,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_COMBO3,80,12,39,85,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Неопред.",ID_NEOPRED,87,101,42,12
+END
+
+BIO DIALOG DISCARDABLE  0, 0, 273, 154
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,112,138,50,14
+    COMBOBOX        IDC_COMBO1,72,8,108,56,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Пользователь:",IDC_STATIC,15,10,52,8
+    LTEXT           "Дата рождения:",IDC_STATIC,15,25,56,8
+    CTEXT           "Static",IDC_DAYSTATIC,77,25,97,8
+    LTEXT           "Дата расчета:",IDC_STATICCAL,202,10,49,8
+    GROUPBOX        "",IDC_BIOGROUP,12,34,250,100
+    PUSHBUTTON      "",IDC_BUTRIG1,224,137,15,14,BS_ICON
+    PUSHBUTTON      "",IDC_BUTRIG2,246,137,15,14,BS_ICON
+    PUSHBUTTON      "",IDC_BUTLEF2,12,137,15,14,BS_ICON
+    PUSHBUTTON      "",IDC_BUTLEF1,34,137,15,14,BS_ICON
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+RICHMENU MENU DISCARDABLE 
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Отменить",                    IDC_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Вырезать",                    IDC_CUT
+        MENUITEM "Копировать",                  IDC_COPY
+        MENUITEM "Вставить",                    IDC_PASTE
+        MENUITEM "Удалить",                     IDC_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Выделить все",                IDC_SELECTALL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+OBLAKOBACK              BITMAP  DISCARDABLE     "bmp00002.BMP"
+BLOGO                   BITMAP  DISCARDABLE     "logo2.BMP"
+T_EMAIL                 BITMAP  DISCARDABLE     "bmp00006.bmp"
+T_HOME                  BITMAP  DISCARDABLE     "bmp00008.bmp"
+T_EXIT                  BITMAP  DISCARDABLE     "bmp00001.bmp"
+CALBACK                 BITMAP  DISCARDABLE     "pp.bmp"
+CHECKIMAGE              BITMAP  DISCARDABLE     "pp0.bmp"
+T_UPDATE                BITMAP  DISCARDABLE     "uu0.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+HANDCUR                 CURSOR  DISCARDABLE     "hand.cur"
+DRAG                    CURSOR  DISCARDABLE     "32766.cur"
+NODRAG                  CURSOR  DISCARDABLE     "32767.cur"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,3,0,191
+ PRODUCTVERSION 3,3,0,191
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "PM_SOFT\0"
+            VALUE "FileDescription", "OrgPanel Library\0"
+            VALUE "FileVersion", "3, 3, 0, 191\0"
+            VALUE "InternalName", "OrgPanel\0"
+            VALUE "LegalCopyright", "Copyright © 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "OrgPanel.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "PM_SOFT OrgPanel\0"
+            VALUE "ProductVersion", "3, 3, 0, 191\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+IDR_BEEPWAVE            WAVE    DISCARDABLE     "start.wav"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "BIO", DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 270
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 151
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+LEFT                    ICON    DISCARDABLE     "icon1.ico"
+RIGHT                   ICON    DISCARDABLE     "left1.ico"
+LEFT2                   ICON    DISCARDABLE     "ico00001.ico"
+RIGHT2                  ICON    DISCARDABLE     "left3.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DAT
+//
+
+IDR_IMEN                DAT     DISCARDABLE     "dat1.bin"
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

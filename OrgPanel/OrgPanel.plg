@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: OrgPanel - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSPE7D7.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "ORGPANEL_EXPORTS" /Fp"Release_Obj/OrgPanel.pch" /YX /Fo"Release_Obj/" /Fd"Release_Obj/" /FD /c 
+"D:\Paul\OrgPanel\OrgPanel\about.cpp"
+]
+Creating command line "cl.exe @C:\Users\Nastya\AppData\Local\Temp\RSPE7D7.tmp" 
+Creating temporary file "C:\Users\Nastya\AppData\Local\Temp\RSPE7D8.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winmm.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"../Release/OrgPanel.pdb" /machine:I386 /def:".\OrgPanel.DEF" /out:"../Release/OrgPanel.dll" /implib:"../Headers/OrgPanel.lib" 
+.\Release_Obj\about.obj
+.\Release_Obj\Bio.obj
+.\Release_Obj\Calendar.obj
+.\Release_Obj\Classes.obj
+.\Release_Obj\Dialogs.obj
+.\Release_Obj\fltext.obj
+.\Release_Obj\Imen.obj
+.\Release_Obj\Main.obj
+.\Release_Obj\MemBit.obj
+.\Release_Obj\MyRich.obj
+.\Release_Obj\MyUtils.obj
+.\Release_Obj\pass.obj
+.\Release_Obj\RegUnit.obj
+.\Release_Obj\SensorLb.obj
+.\Release_Obj\textf.obj
+.\Release_Obj\ToolBar.obj
+.\Release_Obj\res.res
+]
+Creating command line "link.exe @C:\Users\Nastya\AppData\Local\Temp\RSPE7D8.tmp"
+<h3>Output Window</h3>
+Compiling...
+about.cpp
+Linking...
+   Creating library ../Headers/OrgPanel.lib and object ../Headers/OrgPanel.exp
+
+
+
+<h3>Results</h3>
+OrgPanel.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

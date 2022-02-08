@@ -1,0 +1,387 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Русский (Россия) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+HORLOGO                 BITMAP                  "logo.bmp"
+
+VERLOGO                 BITMAP                  "vlogo.bmp"
+
+PASSWORDIMAGE           BITMAP                  "dd3.bmp"
+
+STOP                    BITMAP                  "bitmap2.bmp"
+
+PLAY                    BITMAP                  "bitmap3.bmp"
+
+SOUND                   BITMAP                  "bitmap1.bmp"
+
+DRAGDROP                BITMAP                  "bmp00001.bmp"
+
+IDB_BITDELA             BITMAP                  "bmp00002.bmp"
+
+IDB_BITPRAZ             BITMAP                  "bitmap4.bmp"
+
+NOSOUND                 BITMAP                  "bitmap6.bmp"
+
+IDB_BITEVENT            BITMAP                  "bmp00005.bmp"
+
+IDB_BITROV              BITMAP                  "rov.bmp"
+
+IDB_BITIMEN             BITMAP                  "imen.bmp"
+
+IDB_BITPRIM             BITMAP                  "prim.bmp"
+
+IDB_BITPRAV             BITMAP                  "bmp00003.bmp"
+
+IDB_BITMAP6             BITMAP                  "zzNSuDF6.bmp"
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MainPopupMenu MENU
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Автоматически скрывать",      ID_AUTOHIDE
+        MENUITEM SEPARATOR
+        MENUITEM "Добавить раздел",             ID_ADDTOPIC
+        MENUITEM "Переименовать раздел",        ID_RENAMEFOLDER
+        MENUITEM "Настроить раздел",            IDC_FOLDEROPTION
+        MENUITEM "Удалить раздел",              IDD_DELETETOPIC
+        MENUITEM SEPARATOR
+        MENUITEM "Добавить значок",             ID_ADDICON
+        MENUITEM "Добавить разделитель",        ID_ADDSPLITTER
+        MENUITEM "Обновить значки",             ID_UPDATEICON
+        MENUITEM SEPARATOR
+        MENUITEM "Настройка",                   ID_OPTION
+        MENUITEM "Помощь",                      IDHELP
+        MENUITEM "О Программе",                 IDC_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "Выход",                       ID_EXIT
+    END
+END
+
+ButtonPopupMenu MENU
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Переименовать",               ID_UNITRENAME
+        MENUITEM "Скрыть",                      ID_UNITHIDE
+        MENUITEM "Удалить",                     ID_UNITDELETE
+        MENUITEM "Свойства",                    ID_UNITPROP
+        MENUITEM "Создать ярлык",               ID_UNITCRLNK
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_PASSICON            ICON                    "icon2.ico"
+
+AMAINICON               ICON                    "main.ico"
+
+NULLICON                ICON                    "rova.ico"
+
+NULL2                   ICON                    "null2.ico"
+
+UP                      ICON                    "ico00001.ico"
+
+DOWN                    ICON                    "up1.ico"
+
+IDI_ICON3               ICON                    "pp.ico"
+
+IDI_ICON4               ICON                    "Timer01.ico"
+
+TIMER                   ICON                    "Watch02.ico"
+
+IDI_ICON5               ICON                    "icon5.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,3,0,257
+ PRODUCTVERSION 3,3,0,257
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0"
+        BEGIN
+            VALUE "CompanyName", "PM_SOFT"
+            VALUE "FileDescription", "OrgPanel"
+            VALUE "FileVersion", "3, 3, 0, 257"
+            VALUE "InternalName", "OrgPanel"
+            VALUE "LegalCopyright", "Copyright © 2011"
+            VALUE "OriginalFilename", "OrgPanel.exe"
+            VALUE "ProductName", "PM_SOFT AppBar"
+            VALUE "ProductVersion", "3, 3, 0, 257"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+OPTION DIALOG 0, 0, 220, 240
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Настройки"
+FONT 8, "Tahoma"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,88,224,50,14
+    PUSHBUTTON      "Обновления",IDHELP,2,224,50,14
+    CONTROL         "Tab1",IDC_TAB1,"SysTabControl32",0x0,2,2,215,220
+END
+
+OPTDIA0 DIALOGEX 5, 19, 210, 200
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDITNAME,45,11,65,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,45,31,65,14,ES_AUTOHSCROLL
+    CONTROL         "Загружать при старте Windows",IDC_BOOTCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,54,122,10
+    CONTROL         "Крупные значки",IDC_ICONCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,72,71,10
+    CONTROL         "Автооткрытие",IDC_AUTOCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,91,64,10
+    LTEXT           "Имя:",IDC_STATIC,23,14,18,8
+    LTEXT           "Фамилия:",IDC_STATIC,6,33,36,8
+    LTEXT           "Дата рождения",IDC_DATASTATIC,133,12,54,8
+    GROUPBOX        "Скорость открытия",IDC_STATIC,2,144,100,54
+    CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | WS_TABSTOP,5,156,93,23
+    LTEXT           "Медленно",IDC_STATIC,7,185,35,8
+    LTEXT           "Быстро",IDC_STATIC,71,185,26,8
+    GROUPBOX        "Задержка открытия",IDC_STATIC,108,144,99,54
+    CONTROL         "Slider1",IDC_SLIDER2,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | WS_TABSTOP,110,156,93,23
+    LTEXT           "0",IDC_STATIC,113,184,8,8
+    LTEXT           "1 сек",IDC_STATIC,181,184,18,8
+    CONTROL         "Отображать название раздела",IDC_CHECKTIT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,110,122,10
+    CONTROL         "Поверх окон(в плавающем режиме)",IDC_ALWAYSONTOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,128,140,10
+END
+
+OPTDIA1 DIALOGEX 5, 19, 210, 200
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    CONTROL         "Авто загрузка",IDC_CHECKDIARYAUTO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,111,10,76,10
+    CONTROL         "Полная форма имен",IDC_CHSHOWFULL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,111,24,82,10
+    CONTROL         "Именины для всех",IDC_CHFULLIMEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,111,38,78,10
+    COMBOBOX        IDC_CBDELDELA,108,66,95,81,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CBDELEVENT,108,94,95,65,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Отображать данные",IDC_CHSKYINFO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,112,115,87,10
+    EDITTEXT        IDC_EDITGEOD,112,156,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDITGEOS,161,156,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CBCITY,112,175,90,100,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_DNEVLIST,5,11,95,169,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_BUTUP3,28,186,14,13,BS_ICON
+    PUSHBUTTON      "",IDC_BUTDOWN3,59,186,14,13,BS_ICON
+    LTEXT           "Прошедшие дела",IDC_STATIC,124,54,60,8
+    LTEXT           "Порядок расположения",IDC_STATIC,10,1,81,8
+    GROUPBOX        "Астрономия",IDC_STATIC,104,131,103,68
+    LTEXT           "Долгота",IDC_STATIC,116,146,30,8
+    LTEXT           "Широта",IDC_STATIC,165,146,28,8
+    LTEXT           "Прошедшие события",IDC_STATIC,120,82,72,8
+END
+
+OPTDIA4 DIALOGEX 5, 19, 210, 166
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBOTIME,39,36,100,66,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Пароль",IDC_STATIC,0,63,117,98
+    CONTROL         "Использовать пароль",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,76,91,10
+    EDITTEXT        IDC_EDIT1,42,92,70,14,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,42,111,70,14,ES_PASSWORD | ES_AUTOHSCROLL
+    ICON            IDI_PASSICON,IDC_STATIC,9,97,20,20
+    LTEXT           "Восстанавливать защиту",IDC_STATIC,15,129,87,8
+    COMBOBOX        IDC_COMBO1,6,140,106,65,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDITPREFIX,144,117,40,14,ES_AUTOHSCROLL
+    CONTROL         "Импульсный набор",IDC_PULSECHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,125,142,75,10
+    GROUPBOX        "Дозвон",IDC_STATIC,120,63,87,98
+    LTEXT           "Префикс",IDC_STATIC,148,102,32,8
+    ICON            IDI_ICON3,IDC_STATIC,152,74,20,20
+    GROUPBOX        "Синхронизация времени",IDC_STATIC,0,7,207,51
+    ICON            IDI_ICON4,IDC_STATIC,6,22,20,20
+    LTEXT           "Static",IDC_STATICTIME,39,20,161,8
+    PUSHBUTTON      "Синхронизировать",IDC_BUTSYNC,158,31,26,23,BS_ICON
+END
+
+OPTDIA2 DIALOGEX 5, 19, 210, 190
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Выбор звуков",IDC_STATIC,29,6,150,143
+    LISTBOX         IDC_LIST1,47,18,114,76,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Название",IDC_STATIC,43,99,34,8
+    COMBOBOX        IDC_COMBO1,39,108,125,72,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Обзор",IDC_BUTTON1,39,127,50,14
+    LTEXT           "Тест",IDC_STATIC,104,129,16,8
+    PUSHBUTTON      "",IDC_BUTPLAY,127,127,15,14,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTSTOP,147,127,15,14,BS_BITMAP
+    CONTROL         "Режим ""кукушки""",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,29,153,76,10
+    CONTROL         "Мелкие звуки",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,116,153,63,10
+    PUSHBUTTON      "",IDC_BUTOFF,28,168,15,14,BS_BITMAP
+    LTEXT           "Выключить все звуки",IDC_STATIC,52,171,75,8
+END
+
+OPTDIA3 DIALOGEX 5, 19, 210, 200
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    LTEXT           "Разделы:",IDC_STATIC,6,2,33,8
+    LTEXT           "Значки:",IDC_STATIC,83,2,27,8
+    LISTBOX         IDC_LISTFOLDER,4,12,70,111,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTUNIT,80,12,127,128,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "",IDC_BUTUP1,17,127,14,13,BS_ICON
+    PUSHBUTTON      "",IDC_BUTDOWN1,44,127,14,13,BS_ICON
+    PUSHBUTTON      "",IDC_BUTUP2,134,143,14,13,BS_ICON
+    PUSHBUTTON      "",IDC_BUTDOWN2,159,143,14,13,BS_ICON
+    LTEXT           "Цвета фона",IDC_COLSTATIC,103,164,45,8
+    LTEXT           "Цвет текста",IDC_LABTEXT,103,183,44,8
+    GROUPBOX        "Прозрачность панели",IDC_STATIC_TGR,0,144,99,54,NOT WS_VISIBLE
+    CONTROL         "Slider1",IDC_SLIDER3,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | NOT WS_VISIBLE | WS_TABSTOP,2,156,93,23
+    LTEXT           "0%",IDC_STATIC_T0,5,184,13,8,NOT WS_VISIBLE
+    LTEXT           "100%",IDC_STATIC_T100,73,184,20,8,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    "OPTION", DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 217
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 238
+    END
+
+    "OPTDIA0", DIALOG
+    BEGIN
+        RIGHTMARGIN, 207
+        BOTTOMMARGIN, 198
+    END
+
+    "OPTDIA1", DIALOG
+    BEGIN
+        RIGHTMARGIN, 207
+        BOTTOMMARGIN, 199
+    END
+
+    "OPTDIA4", DIALOG
+    BEGIN
+        RIGHTMARGIN, 207
+        BOTTOMMARGIN, 164
+    END
+
+    "OPTDIA2", DIALOG
+    BEGIN
+        RIGHTMARGIN, 207
+        BOTTOMMARGIN, 188
+    END
+
+    "OPTDIA3", DIALOG
+    BEGIN
+        RIGHTMARGIN, 207
+        BOTTOMMARGIN, 198
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Русский (Россия) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
