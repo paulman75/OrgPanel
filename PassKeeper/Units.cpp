@@ -9,7 +9,8 @@
 
 BOOL	GlobModif;
 BOOL	Modif;
-char	buf[200];
+const int BUF_SIZE = 200;
+char	buf[BUF_SIZE];
 char	buf2[230];
 extern char	MainDir[200];
 extern HWND hMainDlg;
@@ -123,9 +124,9 @@ void AddGroup()
 
 	TTreeNode tn;
 	if (trView->FindNode(0,groupID,&tn))
-		tn=trView->AddChildNode(&tn,newg.Name,newg.ID,0,0);
+		tn=trView->AddChildNode(&tn,newg.Name,50, newg.ID,0,0);
 	else
-		tn=trView->AddChildNode(NULL,newg.Name,newg.ID,0,0);
+		tn=trView->AddChildNode(NULL,newg.Name,50, newg.ID,0,0);
 	trView->SelItem(tn.hHandle);
 	GroupList.Add(&newg);
 	ShowInfo(tn.hHandle);
@@ -142,13 +143,13 @@ void AddUnit(char* name, char* url)
 	newu.Group_ID=groupID;
 	newu.Comment[0]=0;
 	newu.Login[0]=0;
-	strcopy(newu.Name,name,40);
+	strcopy  (newu.Name, name,40);
 	newu.Password[0]=0;
 	GetLocalTime(&newu.Time);
-	strcpy(newu.URL,url);
+	strcpy_s(newu.URL,100,url);
 	TTreeNode tn;
 	trView->FindNode(0,groupID,&tn);	
-	tn=trView->AddChildNode(&tn,newu.Name,newu.ID,1,1);
+	tn=trView->AddChildNode(&tn,newu.Name,50, newu.ID,1,1);
 	trView->SelItem(tn.hHandle);
 	UnitList.Add(&newu);
 	ShowInfo(tn.hHandle);
@@ -182,7 +183,7 @@ void Rename()
 	if (tn.ImageIndex==1) index=FindUnit(tn.Data,&tu);
 	else index=FindGroup(tn.Data,&tg);
 
-	strcpy(buf,tn.Caption);
+	strcpy_s(buf,200,tn.Caption);
 	if (!InputQuery(hMainDlg,"Переименование","Введите новое название",&buf[0],&buf[0],200)) return;
 	
 	trView->SetCaption(hsi,buf);
@@ -258,7 +259,7 @@ void FillTree()
 					if (trView->FindNode(0,tg.Group_ID,&tn))
 					ptn=&tn;
 				}
-				trView->AddChildNode(ptn,tg.Name,tg.ID,0,0);
+				trView->AddChildNode(ptn,tg.Name,50, tg.ID,0,0);
 				LoadIndex++;
 				ig++;
 			}
@@ -275,7 +276,7 @@ void FillTree()
 					if (trView->FindNode(0,tu.Group_ID,&tn))
 					ptn=&tn;
 				}
-				trView->AddChildNode(ptn,tu.Name,tu.ID,1,1);
+				trView->AddChildNode(ptn,tu.Name,50, tu.ID,1,1);
 				iu++;
 				LoadIndex++;
 			}
@@ -335,21 +336,21 @@ BOOL LoadOldUnits(HANDLE hFile)
 	tg.Group_ID=0;
 	tg.ID=1;
 	tg.LoadIndex=1;
-	strcpy(tg.Name,"Все сайты");
+	strcpy_s(tg.Name, GROUPNAME_SIZE, "Все сайты");
 	GroupList.Add(&tg);
 	int ID=1;
 	int Count;
 	DWORD dw;
-	ReadFile(hFile,&Count,4,&dw,NULL);
+	BOOL rf=ReadFile(hFile,&Count,4,&dw,NULL);
 	byte b;
-	ReadFile(hFile,&b,1,&dw,NULL);
+	rf=ReadFile(hFile,&b,1,&dw,NULL);
 	while (Count--)
 	{
 		TUNITOLD uold;
-		ReadFile(hFile,&uold,sizeof(TUNITOLD),&dw,NULL);
+		rf=ReadFile(hFile,&uold,sizeof(TUNITOLD),&dw,NULL);
 		byte crc=Decrypt((byte*)&uold,sizeof(TUNITOLD),b);
 		byte crc2;
-		ReadFile(hFile,&crc2,1,&dw,NULL);
+		rf=ReadFile(hFile,&crc2,1,&dw,NULL);
 		if (crc!=crc2) return FALSE;
 		tu.ID=ID++;
 		tu.LoadIndex=ID;
@@ -375,7 +376,7 @@ BOOL LoadUnits()
 	HANDLE hFile = CreateFile(buf,GENERIC_READ, 0,0, OPEN_EXISTING,0,NULL);
 	if (hFile!=INVALID_HANDLE_VALUE)
 	{
-		ReadFile(hFile,buf,4,&dw,NULL);
+		BOOL rf=ReadFile(hFile,buf,4,&dw,NULL);
 		if (buf[0]=='p' && buf[1]=='s' && buf[2]=='k')
 		{
 			if (buf[3]=='1') Res=LoadOldUnits(hFile);
@@ -383,23 +384,23 @@ BOOL LoadUnits()
 			else
 			{
 				int LoadIndex=1;
-				ReadFile(hFile,&Count,4,&dw,NULL);
+				rf=ReadFile(hFile,&Count,4,&dw,NULL);
 				byte b;
-				ReadFile(hFile,&b,1,&dw,NULL);
+				rf=ReadFile(hFile,&b,1,&dw,NULL);
 				while (Count--)
 				{
 					byte typ;
 					TGROUP tg;
 					TUNIT tu;
-					ReadFile(hFile,&typ,1,&dw,NULL);
+					rf=ReadFile(hFile,&typ,1,&dw,NULL);
 					if (typ==0)
 					{
 						//Загружаем группу
-						ReadFile(hFile,&tg,sizeof(TGROUP),&dw,NULL);
+						rf=ReadFile(hFile,&tg,sizeof(TGROUP),&dw,NULL);
 						byte crc=Decrypt((byte*)&tg,sizeof(TGROUP),b);
 						tg.LoadIndex=LoadIndex++;
 						byte crc2;
-						ReadFile(hFile,&crc2,1,&dw,NULL);
+						rf=ReadFile(hFile,&crc2,1,&dw,NULL);
 						if (crc!=crc2)
 						{
 							CloseHandle(hFile);
@@ -410,11 +411,11 @@ BOOL LoadUnits()
 					else
 					{
 						//Загружаем сайт
-						ReadFile(hFile,&tu,sizeof(TUNIT),&dw,NULL);
+						rf=ReadFile(hFile,&tu,sizeof(TUNIT),&dw,NULL);
 						byte crc=Decrypt((byte*)&tu,sizeof(TUNIT),b);
 						tu.LoadIndex=LoadIndex++;
 						byte crc2;
-						ReadFile(hFile,&crc2,1,&dw,NULL);
+						rf=ReadFile(hFile,&crc2,1,&dw,NULL);
 						if (crc!=crc2)
 						{
 							CloseHandle(hFile);

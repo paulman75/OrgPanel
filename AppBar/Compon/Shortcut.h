@@ -14,8 +14,8 @@ typedef struct {
     CMyString strIconLocation;
     CMyString strArgs;
     int     nIconIndex;
-    WORD    wHotkey;
-    int     nShowCmd;
+    WORD    wHotkey ;
+    int     nShowCmd ;
 	CMyString	strLnkPath;
 } TLnk, *LPLnk;
 

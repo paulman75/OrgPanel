@@ -144,7 +144,7 @@ void LoadUnits()
 		tg.ID=1;
 		tg.LoadIndex=1;
 		tg.St=NULL;
-		strcpy(tg.Name,"Все разделы");
+		strcpy_s(tg.Name, GROUPNAME_SIZE, "Все разделы");
 		GroupList.Add(&tg);
 	}
 }
@@ -218,13 +218,13 @@ void RenameUnit()
 	TGROUP tg;
 	int index=FindGroup(ShowedID,&tg);
 
-	strcpy(buf,tg.Name);
+	strcpy_s(buf,500, tg.Name);
 	if (!InputQuery(hwndMain,"Переименование","Введите новое название",&buf[0],&buf[0],200)) return;
 	
 	HTREEITEM hsi=trView->GetSelItem();
 	trView->SetCaption(hsi,buf);
 
-	strcopy(tg.Name,buf,50);
+	strcopy(tg.Name,buf, GROUPNAME_SIZE);
 	GroupList[index]=tg;
 	Modif=TRUE;
 }
@@ -614,7 +614,7 @@ void FillTree()
 					if (trView->FindNode(0,tg.Group_ID,&tn))
 					ptn=&tn;
 				}
-				trView->AddChildNode(ptn,tg.Name,tg.ID,0,0);
+				trView->AddChildNode(ptn,tg.Name, GROUPNAME_SIZE, tg.ID,0,0);
 				LoadIndex++;
 				ig++;
 			}
@@ -632,11 +632,11 @@ void AddGroup()
 	newg.ID=GetNextGroupID();
 	newg.Group_ID=groupID;
 	newg.St=NULL;
-	strcopy(newg.Name,buf,50);
+	strcopy(newg.Name,buf, GROUPNAME_SIZE);
 
 	TTreeNode tn;
 	trView->FindNode(0,groupID,&tn);	
-	tn=trView->AddChildNode(&tn,newg.Name,newg.ID,0,0);
+	tn=trView->AddChildNode(&tn,newg.Name, GROUPNAME_SIZE, newg.ID,0,0);
 	trView->SelItem(tn.hHandle);
 	GroupList.Add(&newg);
 	ShowInfo(tn.hHandle);

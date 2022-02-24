@@ -54,6 +54,13 @@ void ReadByteFromIni(void* v,LPTSTR Cap)
 	*b=atoi(buf2);
 }
 
+void ReadWordFromIni(void* v, LPTSTR Cap)
+{
+	GetPrivateProfileString("Main", Cap, "", &buf2[0], 250, IniFile);
+	WORD* b = (WORD*)v;
+	*b = atoi(buf2);
+}
+
 void BarConfigFromRegistry(PBarConfig bc)
 {
 bc->AutoHide=FALSE;
@@ -109,14 +116,14 @@ BOOL bIniOk=FileExists(IniFile);
 if (bIniOk)
 {
 	ReadByteFromIni(&bc->Edge,"PanelState");
-	ReadByteFromIni(&bc->DesktopX,"DeskTopX");
-	ReadByteFromIni(&bc->DeskTopY,"DeskTopY");
+	ReadWordFromIni(&bc->DesktopX,"DeskTopX");
+	ReadWordFromIni(&bc->DeskTopY,"DeskTopY");
 	ReadByteFromIni(&bc->AutoHide,"AutoHide");
 	ReadByteFromIni(&bc->BackGr,"BackGnd");
 	ReadByteFromIni(&bc->BackGr2,"BackGnd2");
 	ReadByteFromIni(&bc->Birth.Day,"BirthDay");
 	ReadByteFromIni(&bc->Birth.Month,"BirthMonth");
-	ReadByteFromIni(&bc->Birth.Year,"BirthYear");
+	ReadWordFromIni(&bc->Birth.Year,"BirthYear");
 
 	ReadByteFromIni(&bc->UsedPassword,"UsedPassword");
 	ReadByteFromIni(&bc->RestorePassword,"RestorePassword");
@@ -147,9 +154,9 @@ if (bIniOk)
 	ReadByteFromIni(&bc->ShowSkyInfo,"ShowSkyInfo");
 	ReadByteFromIni(&bc->LastFolderIndex,"LastFolderIndex");
 	StringFromIni(bc->GeoD,"GeoD",20);
-	if (!lstrlen(bc->GeoD)) strcpy(bc->GeoD,"37.37");
+	if (!lstrlen(bc->GeoD)) strcpy_s(bc->GeoD,20, "37.37");
 	StringFromIni(bc->GeoS,"GeoS",20);
-	if (!lstrlen(bc->GeoS)) strcpy(bc->GeoS,"55.45");
+	if (!lstrlen(bc->GeoS)) strcpy_s(bc->GeoS,20, "55.45");
 
 	ReadByteFromIni(&bc->FullImen,"FullImen");
 	int i=0;
@@ -203,9 +210,9 @@ if (!bIniOk)
 	ReadByte(&bc->ShowFullName,"ShowFullName");
 	ReadByte(&bc->ShowSkyInfo,"ShowSkyInfo");
 	StringFromReg(bc->GeoD,"GeoD",20);
-	if (!lstrlen(bc->GeoD)) strcpy(bc->GeoD,"37.37");
+	if (!lstrlen(bc->GeoD)) strcpy_s(bc->GeoD,20,"37.37");
 	StringFromReg(bc->GeoS,"GeoS",20);
-	if (!lstrlen(bc->GeoS)) strcpy(bc->GeoS,"55.45");
+	if (!lstrlen(bc->GeoS)) strcpy_s(bc->GeoS,20,"55.45");
 
 	ReadByte(&bc->FullImen,"FullImen");
 	int i=0;

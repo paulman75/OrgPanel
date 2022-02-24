@@ -131,11 +131,11 @@ void FreePraz()
 	MyPrazList.Clear();
 }
 
-void FormatMyPraz(PMyPraz ppr, char* buf)
+void FormatMyPraz(PMyPraz ppr, char* buf, int ibufsize)
 {
 	DateToStringWithoutYear(&ppr->Date, buf);
-	strcat(buf," - ");
-	strcat(buf,ppr->Message);
+	strcat_s(buf, ibufsize, " - ");
+	strcat_s(buf, ibufsize, ppr->Message);
 }
 
 void PrazListToScreen()
@@ -144,7 +144,7 @@ void PrazListToScreen()
 	char *temp=(char*)malloc(120);
 	for (int i=0; i<MyPrazList.count(); i++)
 	{
-		FormatMyPraz(&MyPrazList[i], temp);
+		FormatMyPraz(&MyPrazList[i], temp, 120);
 		SendMessage(hPrazList,LB_ADDSTRING,0,(LPARAM)temp);
 	}
 	free(temp);

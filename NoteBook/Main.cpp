@@ -36,7 +36,7 @@ extern  LPNOTEUNIT	ActiveUnit;
 extern  LPFIRMUNIT	ActiveFirm;
 extern  LPNOTEUNIT	FirstUnit;
 extern  LPNOTEUNIT	nNote;
-WORD Pos[5]={100,200,450,260,0};
+LONG Pos[5]={100,200,450,260,0};
 extern BOOL	bHumanEditing;
 HACCEL accel;
 
@@ -82,7 +82,7 @@ void SetMode(BOOL bHuman)
 	CheckMenuItem(hMenu,IDC_FIRMDATA, bHuman ? MF_UNCHECKED : MF_CHECKED);
 	CheckMenuItem(hMenu,IDC_HUMANDATA, bHuman ? MF_CHECKED : MF_UNCHECKED);
 	bar->ShowButton(IDC_ADDHUMAN,bHuman);
-	bar->ShowButton(IDC_ADDFIRM,!bHuman);
+	bar->ShowButton(IDC_ADDFIRM,bHuman==false);
 	SetMenuText(hMenu);
 	for (int i=0; i<3; i++) SetWindowText(hFilterStatic[i],bHuman ? cFilterSt[i] : cFilterSt2[i]);
 	UpdateAllData();
@@ -111,12 +111,12 @@ void Ring(int i)
 	LPTSTR s;
 	if (bHumanMode)
 	{
-		if (i=1) s=ActiveUnit->Fields[UN_HOMETEL];
+		if (i==1) s=ActiveUnit->Fields[UN_HOMETEL];
 		else s=ActiveUnit->Fields[UN_WORKTEL];
 	}
 	else
 	{
-		if (i=1) s=ActiveFirm->Fields[UNF_TEL1];
+		if (i==1) s=ActiveFirm->Fields[UNF_TEL1];
 		else ActiveFirm->Fields[UNF_TEL2];
 	}
 	BOOL PulseDial;
@@ -388,7 +388,7 @@ LONG FAR PASCAL FormWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			SetMode(TRUE);
 			break;
 		case IDC_MODE:
-			SetMode(!bHumanMode);
+			SetMode(bHumanMode==false);
 			break;
 		case IDC_HEADOPTION:
 			ShowColOption();

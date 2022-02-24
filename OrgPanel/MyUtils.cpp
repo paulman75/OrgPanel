@@ -9,7 +9,7 @@
 extern LPVOID	lpBeepWave;
 extern HINSTANCE hInstance;
 
-void __stdcall DrawBitmap(HDC hdc, HBITMAP hBit, WORD x, WORD y)
+void __stdcall DrawBitmap(HDC hdc, HBITMAP hBit, LONG x, LONG y)
 {
 	HDC hdc2=CreateCompatibleDC(hdc);
 	SelectObject(hdc2,hBit);
@@ -178,7 +178,7 @@ void __stdcall GotoUrl(HWND Owner, LPCTSTR lpstrUrl)
 	DeleteFile(TEMPNAME);
 }
 
-void __stdcall DrawAlignText(HDC hdc, WORD x, WORD y, LPCTSTR s, BOOL fCen)
+void __stdcall DrawAlignText(HDC hdc, LONG x, LONG y, LPCTSTR s, BOOL fCen)
 {
 	SIZE siz;
 	GetTextExtentPoint32(hdc,s,lstrlen(s),&siz);
@@ -209,7 +209,7 @@ BOOL __stdcall GetDataDir(char* Dir, int size)
 		}
 #endif
 	if (Dir[0]==0) GetModulePath(hInstance,Dir,size);
-	strcat(Dir,"Data\\");
+	strcat_s( Dir,size, "Data\\");
 	return TRUE;
 }
 
@@ -239,7 +239,7 @@ BOOL __stdcall TimeSync(BOOL bShow, HWND hwnd)
 {
 	char *Dir=(char*)malloc(300);
 	GetModulePath(hInstance,Dir,300);
-	strcat(Dir,"OrgInet.dll");
+	strcat_s(Dir,300,"OrgInet.dll");
 	HINSTANCE hIns=LoadLibrary(Dir);
 	free(Dir);
 	if (!hIns) return TRUE;
@@ -254,7 +254,7 @@ BOOL __stdcall CheckUpdate(HWND hwnd)
 {
 	char *Dir=(char*)malloc(300);
 	GetModulePath(hInstance,Dir,300);
-	strcat(Dir,"OrgInet.dll");
+	strcat_s(Dir,300,"OrgInet.dll");
 	HINSTANCE hIns=LoadLibrary(Dir);
 	free(Dir);
 	if (!hIns) return TRUE;

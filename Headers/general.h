@@ -50,7 +50,7 @@ extern "C" MYAPI void __stdcall SetRichEditText(byte ID, LPCTSTR lpstrText);
 extern "C" MYAPI void __stdcall AddTextToRichEdit(byte ID, LPCTSTR lpstrText);
 extern "C" MYAPI void __stdcall DeleteAllRichEdit();
 
-extern "C" MYAPI void __stdcall DrawBitmap(HDC hdc, HBITMAP hBit, WORD x, WORD y);
+extern "C" MYAPI void __stdcall DrawBitmap(HDC hdc, HBITMAP hBit, LONG x, LONG y);
 extern "C" MYAPI void __stdcall PaintBack(HWND hWnd, HBITMAP hBitmap, WNDPROC wndProc, int dx, int dy);
 extern "C" MYAPI void __stdcall GotoUrl(HWND Owner, LPCTSTR lpstrUrl);
 extern "C" MYAPI void __stdcall DrawTransparentBitmap(HDC hdc, int x, int y, HBITMAP bit, COLORREF tranColor);
@@ -70,7 +70,7 @@ extern "C" MYAPI void __stdcall YearToString(LPTSTR St, WORD Y);
 extern "C" MYAPI int  __stdcall FindInString(LPCTSTR s, LPCTSTR s2, BOOL bCase=FALSE);
 extern "C" MYAPI LPBYTE  __stdcall FindInString2(LPBYTE s, LPCTSTR s2, DWORD Size, BOOL first, BOOL NeedTrimSpace);
 extern "C" MYAPI int __stdcall StringCompare(LPCTSTR s1, LPCTSTR s2);
-extern "C" MYAPI void __stdcall DrawAlignText(HDC hdc, WORD x, WORD y, LPCTSTR s, BOOL fCen);
+extern "C" MYAPI void __stdcall DrawAlignText(HDC hdc, LONG x, LONG y, LPCTSTR s, BOOL fCen);
 
 extern "C" MYAPI void __stdcall ShowBioritm(HWND hWnd);
 extern "C" MYAPI void __stdcall MakeShortName(LPCTSTR Name, LPCTSTR MName, LPCTSTR SName, LPTSTR s);

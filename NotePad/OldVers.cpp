@@ -39,7 +39,7 @@ void LoadOldVersion(HANDLE hFile, int vVersion)
 	tg.ID=1;
 	tg.LoadIndex=1;
 	tg.St=NULL;
-	strcpy(tg.Name,"Все разделы");
+	strcpy_s(tg.Name, GROUPNAME_SIZE, "Все разделы");
 	GroupList.Add(&tg);
 	int ID=2;
 	while (TRUE)

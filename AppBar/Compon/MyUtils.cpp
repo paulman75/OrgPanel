@@ -50,10 +50,10 @@ void MyMoveFile(LPCTSTR sFrom, LPCTSTR sTo, LPCTSTR name)
 	char* s1=(char*)malloc(300);
 	char* s2=(char*)malloc(300);
 
-	strcpy(s1,sFrom);
-	strcat(s1,name);
-	strcpy(s2,sTo);
-	strcat(s2,name);
+	strcpy_s(s1,300,sFrom);
+	strcat_s(s1,300,name);
+	strcpy_s(s2,300,sTo);
+	strcat_s(s2,300,name);
 	if (s1[lstrlen(s1)-1]!='*')
 		if (!FileExists(s1)) return;
 	if (s2[lstrlen(s2)-3]=='*')	s2[lstrlen(s2)-2]=0;

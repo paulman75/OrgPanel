@@ -252,7 +252,7 @@ void UpdateUnitName()
 	SendMessage(GetDlgItem(hMainDlg,IDC_COMBO2),CB_RESETCONTENT,0,0);
 	for (int j=0; j<uCount[i]; j++)
 	{
-		strcpy((char*)buf,Units[ind+j].name);
+		strcpy_s((char*)buf,50, Units[ind+j].name);
 		char* ts=strstr((char*)buf,":");
 		if (ts) *ts=0;
 		SendMessage(GetDlgItem(hMainDlg,IDC_COMBO1),CB_ADDSTRING,0,(LPARAM)buf);
@@ -271,8 +271,8 @@ void IntToBin(char* buf, int value)
 	buf[0]=0;
 	while (d)
 	{
-		if ((value&d)==d) strcat(buf,"1");
-		else strcat(buf,"0");
+		if ((value&d)==d) strcat_s(buf,100,"1");
+		else strcat_s(buf,100,"0");
 		d=d>>1;
 	}
 }
@@ -338,10 +338,10 @@ void CalcResult()
 	char buf[100];
 	if (bFiz)
 	{
-		sprintf(buf,"%g",u1->value);
-		strcat(buf," ");
+		sprintf_s(buf,100,"%g",u1->value);
+		strcat_s(buf,100," ");
 		char* ts=strstr(u1->name,":");
-		if (ts) strcat(buf,ts+1);
+		if (ts) strcat_s(buf,100,ts+1);
 		SendMessage(GetDlgItem(hMainDlg,IDC_EDIT1),WM_SETTEXT,0,(LPARAM)buf);
 		return;
 	}
@@ -372,13 +372,13 @@ void CalcResult()
 				IntToBin(buf,(int)l);
 				break;
 			case 8:
-				sprintf(buf,"%o",(int)l);
+				sprintf_s(buf,100,"%o",(int)l);
 				break;
 			case 10:
-				sprintf(buf,"%g",l);
+				sprintf_s(buf,100,"%g",l);
 				break;
 			case 16:
-				sprintf(buf,"%x",(int)l);
+				sprintf_s(buf,100,"%x",(int)l);
 				CharUpper(buf);
 				break;
 			}
@@ -416,7 +416,7 @@ void CalcResult()
 				l=l*4/5;
 				break;
 			}
-			sprintf(buf,"%g",l);
+			sprintf_s(buf,100,"%g",l);
 		}
 	}
 	SendMessage(GetDlgItem(hMainDlg,IDC_EDIT2),WM_SETTEXT,0,(LPARAM)buf);

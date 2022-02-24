@@ -95,9 +95,10 @@ void CMyRichEdit::SetText(LPCTSTR lpstrText)
 void CMyRichEdit::AddText(LPCTSTR lpstrText)
 {
 	int len=GetWindowTextLength(hWnd);
-	char* buf=(char*)malloc(len+1+lstrlen(lpstrText));
+	int blen = len + 1 + lstrlen(lpstrText);
+	char* buf=(char*)malloc(blen);
 	GetWindowText(hWnd,buf,len+1);
-	strcat(buf,lpstrText);
+	strcat_s(buf,blen, lpstrText);
 	SetText(buf);
 	free(buf);
 	len=GetWindowTextLength(hWnd);
@@ -301,7 +302,7 @@ CMyRichEdit::CMyRichEdit(HWND Owner, WORD x, WORD y, WORD cx, WORD cy, byte MyRi
 	SendMessage(hWnd,EM_GETCHARFORMAT,TRUE,(LPARAM)&cf);
 	cf.bCharSet=DEFAULT_CHARSET;
 	cf.dwEffects=cf.dwEffects & ~CFM_BOLD;
-	strcpy(cf.szFaceName,"MS Sans Serif");
+	strcpy_s(cf.szFaceName,"MS Sans Serif");
 	SendMessage(hWnd,EM_SETCHARFORMAT,SCF_DEFAULT,(LPARAM)(CHARFORMAT FAR *)&cf);
 	SendMessage(hWnd,EM_SETMARGINS, EC_LEFTMARGIN,5);
 	SendMessage(hWnd,EM_SETMARGINS, EC_RIGHTMARGIN,5);

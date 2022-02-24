@@ -70,7 +70,7 @@ public:
 	void SetCaption(HTREEITEM ti, LPTSTR Caption);
 	void Notify(int code, LPNMHDR nmhdr);
 	void SetBackBitmap(LPCTSTR strBit);
-	TTreeNode AddChildNode(PTreeNode ParentNode, char* Caption, int Data, int ImageIndex, int SelectedIndex);
+	TTreeNode AddChildNode(PTreeNode ParentNode, char* Caption, int CapSize, int Data, int ImageIndex, int SelectedIndex);
 	static LONG CALLBACK StaticTreeWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	LONG	TreeWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	BOOL	FindNode(int iImageIndex, int Data, PTreeNode pnode);

@@ -309,7 +309,7 @@ BarUnit* LoadUnit(BarUnit* PrevUnit,PBarFolder fol,HANDLE Fil,LPWORD pIndex,HDC 
 {
 	BarUnit* uni;
 	uni=new BarUnit();
-	ReadFile(Fil,&buf,bVer ? 2 : 3,&dwd,NULL);
+	BOOL rf=ReadFile(Fil,&buf,bVer ? 2 : 3,&dwd,NULL);
 	uni->Hidden=(BOOL)buf[0];
 	uni->ParentFolder=fol;
 	byte ll=buf[bVer ? 1 : 2];
@@ -327,17 +327,17 @@ BarUnit* LoadUnit(BarUnit* PrevUnit,PBarFolder fol,HANDLE Fil,LPWORD pIndex,HDC 
 		if (ll==254)//Версия с именами сплиттеров
 		{
 			ZeroMemory(buf2,230);
-			ReadFile(Fil,buf2,1,&dwd,NULL);
+			rf=ReadFile(Fil,buf2,1,&dwd,NULL);
 			ll=buf2[0];
 			ZeroMemory(buf2,230);
-			ReadFile(Fil,buf2,ll,&dwd,NULL);
+			rf=ReadFile(Fil,buf2,ll,&dwd,NULL);
 			*uni->Caption=buf2;
 		}
 	}
 	else
 	{
 		ZeroMemory(buf2,230);
-		ReadFile(Fil,buf2,ll,&dwd,NULL);
+		BOOL rf=ReadFile(Fil,buf2,ll,&dwd,NULL);
 		byte Spec=buf[1];
 		if (buf2[1]!=':')
 		{
@@ -423,8 +423,8 @@ fol->TitColor=aTitColor;
 fol->Alpha=iAlpha;
 byte UnitKol;
 ZeroMemory(buf,5);
-ReadFile(hFile,buf,4,&dwd,NULL);
-BOOL bCorrectVersion=!lstrcmp(buf,lab);
+BOOL rf=ReadFile(hFile,buf,4,&dwd,NULL);
+BOOL bCorrectVersion=lstrcmp(buf,lab)==0;
 if (!bCorrectVersion) SetFilePointer(hFile,0,0,FILE_BEGIN);
 if (!ReadFile(hFile,&UnitKol,1,&dwd,NULL)) 
 {
@@ -533,7 +533,7 @@ GetClientRect(MainBar->GetHWND(),&rc);
 if (Hor) pt.x+=rc.right-rc.left;
 else pt.y+=rc.bottom-rc.top;
 if (hBar->MoveEdge==ABE_DESKTOP) pt.y-=2;
-Switch->UpdatePosition(pt.x+Hor*FullIcon/5,pt.y+(1-Hor)*FullIcon/5-1,FullIcon,FullIcon+4,n,TRUE);
+Switch->UpdatePosition((WORD)(pt.x+Hor*FullIcon/5),(WORD)(pt.y+(1-Hor)*FullIcon/5-1),FullIcon,FullIcon+4,n,TRUE);
 if (Hor) pt.x+=(WORD)(FullIcon*1.4);  
 else pt.y+=(WORD)(FullIcon*1.4);
 if (hBar->MoveEdge==ABE_DESKTOP)
@@ -750,11 +750,11 @@ if (MainFolder!=NULL)
 		DWORD	dwd;
 		char filver[5];
 		ZeroMemory(filver,5);
-		ReadFile(hFile,filver,4,&dwd,NULL);
+		BOOL rf=ReadFile(hFile,filver,4,&dwd,NULL);
 		int bFileVersion=2;
-		if (!lstrcmp(filver,"fol3")) { bFileVersion=3; }
-		if (!lstrcmp(filver,"fol4")) { bFileVersion=4; }
-		if (!lstrcmp(filver,"fol5")) { bFileVersion=5; }
+		if (lstrcmp(filver,"fol3")==0 ) { bFileVersion = 3; }
+		if (lstrcmp(filver,"fol4")==0 ) { bFileVersion = 4; }
+		if (lstrcmp(filver,"fol5")==0 ) { bFileVersion = 5; }
 
 		if (bFileVersion==2) SetFilePointer(hFile,0,0,FILE_BEGIN);
 
@@ -763,11 +763,11 @@ if (MainFolder!=NULL)
 		{
 			DWORD Reserved=0;
 
-			ReadFile(hFile,&FolderPathLen,1,&dwd,NULL);
+			rf=ReadFile(hFile,&FolderPathLen,1,&dwd,NULL);
 			if ((FolderPathLen==0)||(!dwd)) break;
 
 			ZeroMemory(&buf,1000);
-            ReadFile(hFile,buf,FolderPathLen,&dwd,NULL);
+            rf=ReadFile(hFile,buf,FolderPathLen,&dwd,NULL);
 			if (buf[1]!=':')
 			{
 				lstrcpy(buf2,buf);
@@ -784,25 +784,25 @@ if (MainFolder!=NULL)
 
 			COLORREF bkCol=BarCon.BackGr;
 			COLORREF bkCol2=BarCon.BackGr2;
-			COLORREF titCol;
+			COLORREF titCol=0;
 			if (bFileVersion>=3)
 			{
-				ReadFile(hFile,&bkCol,sizeof(COLORREF),&dwd,NULL);
+				rf=ReadFile(hFile,&bkCol,sizeof(COLORREF),&dwd,NULL);
 			}
 			if (bFileVersion>=4)
 			{
-				ReadFile(hFile,&bkCol2,sizeof(COLORREF),&dwd,NULL);
+				rf=ReadFile(hFile,&bkCol2,sizeof(COLORREF),&dwd,NULL);
 			}
 			else bkCol2=bkCol;
 			if (bFileVersion>=3)
 			{
-				ReadFile(hFile,&titCol,sizeof(COLORREF),&dwd,NULL);
+				rf=ReadFile(hFile,&titCol,sizeof(COLORREF),&dwd,NULL);
 			}
 			byte iAlpha=0;
 			if (bFileVersion>=5)
 			{
 				char cReserv[10];
-				ReadFile(hFile,cReserv,10,&dwd,NULL);
+				rf=ReadFile(hFile,cReserv,10,&dwd,NULL);
 				iAlpha=cReserv[0];
 			}
             nFolder=LoadFolder(buf2,buf,prevF,&Index,Bit->hdc, bkCol, bkCol2, titCol, iAlpha);
@@ -1067,7 +1067,7 @@ void UnitDropEnd(BarUnit* nUnit, POINT* lpt)
 
 	RECT rc;
 	GetWindowRect(toolbar->GetHWND(),&rc);
-	if ((lpt->x<rc.left) | (lpt->x>rc.right) | (lpt->y<rc.top) | (lpt->y>rc.bottom)) return;
+	if ((lpt->x<rc.left) || (lpt->x>rc.right) || (lpt->y<rc.top) || (lpt->y>rc.bottom)) return;
 
 	BarUnit* nPrevUnit=(BarUnit*)toolbar->GetPrevUnit((WORD)(lpt->x-rc.left),(WORD)(lpt->y-rc.top));
 	if (nPrevUnit) if (nPrevUnit->NextUnit==nUnit) return;
@@ -1128,10 +1128,16 @@ BarUnit::BarUnit()
 {
 ButImage=NULL;
 SmallImage=NULL;
+Splitter = NULL;
+ParentFolder = NULL;
+PrevUnit = NULL;
 FilePath=new CMyString();
 Caption=new CMyString();
 IconPath=new CMyString();
 strPath=new CMyString();
+IconIndex = 0;
+NextUnit = NULL;
+Hidden = 0;
 }
 
 void BarUnit::DeleteBitmap()

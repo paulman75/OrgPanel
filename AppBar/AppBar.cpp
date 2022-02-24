@@ -93,7 +93,7 @@ case	ABE_LEFT:
 	cc=(OpenPanelX==0);
 	break;
 case	ABE_RIGHT:      
-	cc=(ClosePanelX==(GetSystemMetrics(SM_CXSCREEN)-FDelta));
+	cc=(ClosePanelX==(GetSystemMetrics(SM_CXVIRTUALSCREEN)-FDelta));
 	break;
 case	ABE_TOP:        
 	cc=(OpenPanelY==0);
@@ -226,7 +226,7 @@ if (!bOpening && GetTitleVisible()/*&&FAutoHide*/)
 BOOL CAppBar::CheckEndPanelTrack(int XDelta,int YDelta)
 {
 int x;
-BOOL c;
+BOOL c=false;
 int Pos;
 
 if (FEdge==ABE_DESKTOP) return TRUE;
@@ -297,7 +297,7 @@ if (c)
 			tbExists=(rc.right-FDelta>0);
 			break;
 		case ABE_RIGHT:	
-			tbExists=(rc.left+FDelta<GetSystemMetrics(SM_CXSCREEN));
+			tbExists=(rc.left+FDelta<GetSystemMetrics(SM_CXVIRTUALSCREEN));
 			break;
 		case ABE_TOP:
 			tbExists=(rc.bottom-FDelta>0);
@@ -352,7 +352,7 @@ GetWindowRect(Main_hwnd,&rc);
 if ((FEdge==ABE_LEFT) || (FEdge==ABE_RIGHT)) 
 {
         if (FEdge==ABE_LEFT) rc.left=-FullBarWidth;
-        else rc.left=GetSystemMetrics(SM_CXSCREEN);
+        else rc.left=GetSystemMetrics(SM_CXVIRTUALSCREEN);
 } else 
 {
         if (FEdge==ABE_TOP) rc.top=-FullBarHeight;
@@ -407,7 +407,7 @@ void CAppBar::AppBarQuerySetPos()
 Dat.rc.top=0;
 Dat.rc.bottom=GetSystemMetrics(SM_CYSCREEN);
 Dat.rc.left=0;
-Dat.rc.right=GetSystemMetrics(SM_CXSCREEN);
+Dat.rc.right= GetSystemMetrics(SM_CXVIRTUALSCREEN);
 SHAppBarMessage(ABM_QUERYPOS,&Dat);
 w=FullBarWidth;
 h=FullBarHeight;
@@ -463,7 +463,7 @@ switch (wParam)
 {
 	case ABN_STATECHANGE:
         uState=SHAppBarMessage(ABM_GETSTATE,&Dat);
-        if ((ABS_ALWAYSONTOP) && (uState=ABS_ALWAYSONTOP)) 
+        if ((ABS_ALWAYSONTOP) && (uState==ABS_ALWAYSONTOP)) 
         SetWindowPos(Main_hwnd,HWND_BOTTOM,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
         else SetWindowPos(Main_hwnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
 	break;
@@ -628,10 +628,10 @@ GetCursorPos(&CursorPos);
 Dat.rc.top=0;
 Dat.rc.bottom=GetSystemMetrics(SM_CYSCREEN);
 Dat.rc.left=0;
-Dat.rc.right=GetSystemMetrics(SM_CXSCREEN);
+Dat.rc.right=GetSystemMetrics(SM_CXVIRTUALSCREEN);  //GetSystemMetrics(SM_CXVIRTUALSCREEN); SM_CXSCREEN
 SHAppBarMessage(ABM_QUERYPOS,&Dat);
 if (Dat.rc.bottom==0) Dat.rc.bottom=GetSystemMetrics(SM_CYSCREEN);
-if (Dat.rc.right==0) Dat.rc.right=GetSystemMetrics(SM_CXSCREEN);
+if (Dat.rc.right==0) Dat.rc.right=GetSystemMetrics(SM_CXVIRTUALSCREEN);
 rx=CursorPos.x-Dat.rc.left;
 if (rx<1) rx=1;
 rx1=Dat.rc.right-CursorPos.x;

@@ -10,7 +10,8 @@
 
 extern HINSTANCE hInstance;
 SHDocVw::IShellWindowsPtr m_spSHWinds;
-extern char	buf[200];
+const int BUF_SIZE=200;
+extern char	buf[BUF_SIZE];
 char name[20][100];
 char url[20][200];
 int SelName;
@@ -34,13 +35,13 @@ void FillIEList(HWND hl)
 		if (spBrowser != NULL)
 		{
 			_bstr_t str = spBrowser->GetLocationName();
-			strcpy(name[i],(char*)str);
-			strcpy(buf,(char*)str);
-			strcat(buf,"  (");
+			strcpy_s(name[i],100,(char*)str);
+			strcpy_s(buf, BUF_SIZE, (char*)str);
+			strcat_s(buf, BUF_SIZE, "  (");
 			str= spBrowser->GetLocationURL();
-			strcpy(url[i],(char*)str);
-			strcat(buf,(char*)str);
-			strcat(buf,")");
+			strcpy_s(url[i],200,(char*)str);
+			strcat_s(buf, BUF_SIZE, (char*)str);
+			strcat_s(buf, BUF_SIZE,")");
 			SendMessage(hl,LB_ADDSTRING,0,(LPARAM)buf);
 		}
 	}

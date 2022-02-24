@@ -337,9 +337,9 @@ void CToolBar2::DrawButton(PToolButton b, HDC hdc)
 
 		BITMAPINFOHEADER bit;
 		GetObject(b->hBit->GetBitmap(),sizeof(bit),&bit);
-		char ddx=(FButSize-bit.biWidth)/2;
-		char ddy=(FButSize-bit.biHeight)/2;
-		char dd=b->Pressed ? 1:0;
+		LONG ddx=(FButSize-bit.biWidth)/2;
+		LONG ddy=(FButSize-bit.biHeight)/2;
+		LONG dd=b->Pressed ? 1:0;
 		BitBlt(hdc,rc.left+ddx+dd,rc.top+ddy+dd,bit.biWidth,bit.biHeight,b->hBit->hdc,0,0,SRCCOPY);
 	}
 	if (c) ReleaseDC(hWnd,hdc);

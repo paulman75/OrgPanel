@@ -69,7 +69,7 @@ void OnChangeClick()
 	}
 	free(gp->Name);
 	gp->Name=(char*)malloc(strlen(buf)+1);
-	strcpy(gp->Name,buf);
+	strcpy_s(gp->Name, strlen(buf) + 1, buf);
 	free(buf);
 	UpdateGroupList();
 	GroupChanged=TRUE;
@@ -105,7 +105,7 @@ void OnAddGroup()
 	LPGROUPUNIT gu=(LPGROUPUNIT)malloc(sizeof(TGROUPUNIT));
 	gu->Next=NULL;
 	gu->Name=(char*)malloc(strlen(buf)+1);
-	strcpy(gu->Name,buf);
+	strcpy_s(gu->Name, strlen(buf) + 1, buf);
 	free(buf);
 	gp=Gr;
 	if (!Gr)

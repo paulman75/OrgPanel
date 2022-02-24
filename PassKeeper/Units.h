@@ -30,11 +30,12 @@ typedef struct
 	int		LoadIndex;
 }TUNIT, *LPUNIT;
 
+const int GROUPNAME_SIZE = 50;
 typedef struct
 {
 	int		ID;
 	int		Group_ID;
-	char	Name[50];
+	char	Name[GROUPNAME_SIZE];
 	int		LoadIndex;
 } TGROUP, *LPGROUP;
 

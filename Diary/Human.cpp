@@ -37,7 +37,7 @@ void AddRov(PPage pp)
 			int d=pp->Date.Year-Humans[i].BDate.Year;
 			if (d>=0)
 			{
-				if (d==0) strcpy(temp2,"Рождение!!!");
+				if (d==0) strcpy_s(temp2,100,"Рождение!!!");
 				else YearToString(temp2,d);
 				lstrcat(temp," ");
 				lstrcat(temp,temp2);

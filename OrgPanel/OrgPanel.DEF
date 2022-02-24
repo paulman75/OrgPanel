@@ -2,9 +2,6 @@ LIBRARY   OrgPanel
 
 HEAPSIZE  1024
 
-SEGMENTS
-    FIXEDSEG
-
 EXPORTS
 	DrawBitmap
 	PaintBack

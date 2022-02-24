@@ -15,7 +15,7 @@ void CopyString(LPTSTR s1,LPCTSTR s2,int Size)
 	{
 		int l=lstrlen(s2);
 		if (l>Size-1) l=Size-1;
-		strncpy(s1,s2,l);
+		strncpy_s(s1, Size, s2,l);
 	}
 	else s1[0]=0;
 }

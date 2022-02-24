@@ -1,23 +1,50 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31105.61
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppBar", "AppBar.vcxproj", "{6B31373C-6153-443C-82D6-704B24DAC8CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Diary", "..\Diary\Diary.vcxproj", "{A5828822-B215-4DD0-853F-B314964490B1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoteBook", "..\NoteBook\NoteBook.vcxproj", "{66C3EC3D-C2B1-48BD-BFEA-9A10475FE87E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NotePad", "..\NotePad\NotePad.vcxproj", "{A63AC9D5-4AC7-48E7-BCE0-54F6822C05C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OrgInet", "..\OrgInet\OrgInet.vcxproj", "{8A328562-DA1D-4A16-8966-FA35E810A560}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OrgPanel", "..\OrgPanel\OrgPanel.vcxproj", "{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PassKeeper", "..\PassKeeper\PassKeeper.vcxproj", "{54D6F8C4-C8CA-43E9-B18E-AACFD65EEF33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitConv", "..\UnitConv\UnitConv.vcxproj", "{BE3977C5-D5C1-4E36-89A8-8DD3E9DAC878}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91B80B1E-26AE-4BB1-85E2-BE93AB71BD63} = {91B80B1E-26AE-4BB1-85E2-BE93AB71BD63}
+		{8A328562-DA1D-4A16-8966-FA35E810A560} = {8A328562-DA1D-4A16-8966-FA35E810A560}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

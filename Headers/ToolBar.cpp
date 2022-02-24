@@ -125,6 +125,12 @@ CToolBar::CToolBar(HWND Owner, WORD x, WORD y,char ButSizeX, char ButSizeY, char
 {
 DefButw=ButSizeX;
 FButh=ButSizeY;
+ActiveButton = NULL;
+ClickButton = NULL;
+hBackAll = NULL;
+hBackBitmap = NULL;
+hMenuBitmap = NULL;
+hWnd = NULL;
 FirstPos=0;
 KolTips=0;
 FirstButton=NULL;
@@ -341,12 +347,12 @@ void CToolBar::Update2Bitmap(PToolButton b)
 	}
 }
 
-void CToolBar::PaintBitmap(CMemoryBitmap* b, CMemoryBitmap* Mask, HDC hdc, WORD xc, WORD yc, BOOL Enable)
+void CToolBar::PaintBitmap(CMemoryBitmap* b, CMemoryBitmap* Mask, HDC hdc, LONG xc, LONG yc, BOOL Enable)
 {
 	BITMAPINFOHEADER bit;
 	GetObject(Mask->handle,sizeof(bit),&bit);
-	WORD w=bit.biWidth/2;
-	WORD h=(WORD)bit.biHeight;
+	LONG w=bit.biWidth/2;
+	LONG h=bit.biHeight;
 	yc=yc-h/2;
 	xc=xc-w/2;
 	if (Enable)
@@ -392,8 +398,8 @@ void CToolBar::DrawButton(PToolButton b, HDC hdc)
 		DrawLine(hdc,b->State,hGrayPen,hWhitePen,rc.left,rc.bottom-1,rc.left+DefButw-1,rc.bottom-1,rc.left+DefButw-1,rc.top);
 	}
 	char dd=b->State==1 ? 1:0;
-	WORD x=rc.left+DefButw/2+dd;
-	WORD y=(rc.top+rc.bottom)/2+dd;
+	LONG x=rc.left+DefButw/2+dd;
+	LONG y=(rc.top+rc.bottom)/2+dd;
 	if (FShowCaption)
 	{
 		SetBkMode(hdc,TRANSPARENT);
@@ -425,8 +431,8 @@ void CToolBar::DrawButton(PToolButton b, HDC hdc)
 			}
 		}
 		GetTextExtentPoint32(hdc,f,l,&siz);
-		WORD xt=rc.left+(DefButw-siz.cx)/2+dd;
-		WORD yt=rc.bottom-siz.cy+dd-2;
+		LONG xt=rc.left+(DefButw-siz.cx)/2+dd;
+		LONG yt=rc.bottom-siz.cy+dd-2;
 		if (b->Enable)	TextOut(hdc,xt,yt,f,l);
 		else DrawState(hdc, NULL, NULL, (LPARAM)f, NULL, xt, yt, 0, 0, DST_TEXT |DSS_DISABLED);
 		y-=siz.cy/2-2;

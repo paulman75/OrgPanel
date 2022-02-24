@@ -209,17 +209,17 @@ void PaintPage(HDC dc, PPage pag, int h)
 		int m1=(int)((pag->Sun1-(int)pag->Sun1)*60);
 		int m2=(int)((pag->Sun2-(int)pag->Sun2)*60);
 
-		if (pag->Sun1==-2) strcpy(ch,"Полярная ночь");
+		if (pag->Sun1==-2) strcpy_s(ch,50,"Полярная ночь");
 		else
-		if (pag->Sun1==-3) strcpy(ch,"Полярный день");
+		if (pag->Sun1==-3) strcpy_s(ch,50,"Полярный день");
 		else
 		{
-			strcpy(ch,"Восход: ");
+			strcpy_s(ch,50, "Восход: ");
 			if (pag->Sun1>=0) wsprintf(ch,"%s%.02d:%.02d",ch,(int)pag->Sun1,m1);
-			else strcat(ch,"-");
-			strcat(ch,", Заход: ");
+			else strcat_s(ch,50,"-");
+			strcat_s(ch,50, ", Заход: ");
 			if (pag->Sun2>=0) wsprintf(ch,"%s%.02d:%.02d",ch,(int)pag->Sun2,m2);
-			else strcat(ch,"-");
+			else strcat_s(ch,50,"-");
 		}
 		SetTextColor(dc,0);
 		SelectObject(dc,hMainFont);
@@ -230,12 +230,12 @@ void PaintPage(HDC dc, PPage pag, int h)
 		m1=(int)((pag->Moon1-(int)pag->Moon1)*60);
 		m2=(int)((pag->Moon2-(int)pag->Moon2)*60);
 
-		strcpy(ch,"Восход: ");
+		strcpy_s(ch,50,"Восход: ");
 		if (pag->Moon1>=0) wsprintf(ch,"%s%.02d:%.02d",ch,(int)pag->Moon1,m1);
-		else strcat(ch,"-");
-		strcat(ch,", Заход: ");
+		else strcat_s(ch,50,"-");
+		strcat_s(ch,50,", Заход: ");
 		if (pag->Moon2>=0) wsprintf(ch,"%s%.02d:%.02d",ch,(int)pag->Moon2,m2);
-		else strcat(ch,"-");
+		else strcat_s(ch,50,"-");
 
 		GetTextExtentPoint32(dc,ch,lstrlen(ch),&siz);
 		DrawIcon(dc,pag->x0+(PageWidth-(26+siz.cx))/2,97,hMoon[pag->MoonPhase]);
@@ -245,13 +245,13 @@ void PaintPage(HDC dc, PPage pag, int h)
 		{
 			switch (pag->MoonPhase)
 			{
-			case Newmoon: strcpy(ch,"Новолуние");
+			case Newmoon: strcpy_s(ch,50, "Новолуние");
 				break;
-			case FirstQuarter: strcpy(ch,"Первая четверть");
+			case FirstQuarter: strcpy_s(ch,50,"Первая четверть");
 				break;
-			case Fullmoon: strcpy(ch,"Полная луна");
+			case Fullmoon: strcpy_s(ch,50,"Полная луна");
 				break;
-			case LastQuarter: strcpy(ch,"Последняя четверть");
+			case LastQuarter: strcpy_s(ch,50,"Последняя четверть");
 				break;
 			}
 			int m,h;

@@ -48,7 +48,7 @@ private:
 	void DrawToolBar(PAINTSTRUCT *ps);
 	void DrawButton(PToolButton b, HDC hdc);
 	void DrawSepLine(HDC hdc,HPEN hPen,PToolButton b,char d);
-	void PaintBitmap(CMemoryBitmap* b, CMemoryBitmap* Mask, HDC hdc, WORD xc, WORD yc, BOOL Enable);
+	void PaintBitmap(CMemoryBitmap* b, CMemoryBitmap* Mask, HDC hdc, LONG xc, LONG yc, BOOL Enable);
 	void UpdateBar();
 	void Update2Bitmap(PToolButton b);
 	void CreateMenuButtonImage(CMemoryBitmap* b);

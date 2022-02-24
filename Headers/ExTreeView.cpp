@@ -6,7 +6,7 @@
 extern HINSTANCE hInstance;		  // Global instance handle for application
 TTreeNode tn;
 
-TTreeNode CExTreeView::AddChildNode(PTreeNode ParentNode, char* Caption, int Data, int ImageIndex, int SelectedIndex)
+TTreeNode CExTreeView::AddChildNode(PTreeNode ParentNode, char* Caption, int CapSize, int Data, int ImageIndex, int SelectedIndex)
 {
 	TV_INSERTSTRUCT tvi;
 	tvi.hParent=NULL;
@@ -19,7 +19,7 @@ TTreeNode CExTreeView::AddChildNode(PTreeNode ParentNode, char* Caption, int Dat
 	tvi.item.iSelectedImage=SelectedIndex;
 	tvi.item.lParam=Data;
 
-	strcpy(tn.Caption,Caption);
+	strcpy_s(tn.Caption, CapSize, Caption);
 	tn.Data=Data;
 	tn.ImageIndex=ImageIndex;
 	tn.SelectedIndex=SelectedIndex;
@@ -61,6 +61,9 @@ CExTreeView::CExTreeView(HWND Owner, WORD x, WORD y, WORD w, WORD h, WORD ID, HW
 	hDraggedItem=NULL;
 	CanDrag=TRUE;
 	bDragImage=TRUE;
+	bLastOKCursor = false;
+	hMainCursor = NULL;
+	hMenu = NULL;
 	hOKDragCursor=LoadCursor(hInstance,"DRAGCURSOR");
 	hBadDragCursor=LoadCursor(NULL,MAKEINTRESOURCE(IDC_NO));
 

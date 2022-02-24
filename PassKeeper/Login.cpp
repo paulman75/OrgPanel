@@ -7,9 +7,11 @@
 
 BOOL bExistsData;
 BOOL bExistsPass;
-extern char	buf[200];
+const int BUF_SIZE = 200;
+extern char	buf[BUF_SIZE];
 extern char MainDir[200];
-char Password[20];
+const int PASSWORD_SIZE = 20;
+char Password[PASSWORD_SIZE];
 extern HINSTANCE hInstance;
 
 BOOL FAR PASCAL PassDlgProc(HWND hDlg, unsigned message, WPARAM wParam, LPARAM lParam)
@@ -43,7 +45,7 @@ BOOL InputPassword(BOOL bNewInput)
 	if (!DialogBox(hInstance,"PASSDLG",NULL,PassDlgProc)) return FALSE;
 	if (bNewInput)
 	{
-		strcpy(Password,buf);
+		strcpy_s(Password, PASSWORD_SIZE, buf);
 		return TRUE;
 	}
 	BOOL b=strcmp(Password,buf)==0;
@@ -53,9 +55,9 @@ BOOL InputPassword(BOOL bNewInput)
 
 void FillPass()
 {
-	strcat(Password,"як");
-	strcat(buf,"ев");
-	strcat(Password,"ин");
+	strcat_s(Password, PASSWORD_SIZE, "як");
+	strcat_s(buf, BUF_SIZE,"ев");
+	strcat_s(Password, PASSWORD_SIZE,"ин");
 }
 
 BOOL CheckPassword()
@@ -102,10 +104,10 @@ BOOL CheckPassword()
 		}
 		else
 		{
-			strcpy(Password,"Р");
-			strcat(Password,"ев");
+			strcpy_s(Password, PASSWORD_SIZE, "Р");
+			strcat_s(Password, PASSWORD_SIZE, "ев");
 			FillPass();
-			strcat(Password,"а");
+			strcat_s(Password, PASSWORD_SIZE, "а");
 			if (!InputPassword(FALSE)) return FALSE;
 		}
 		bExistsData=FALSE;
@@ -116,7 +118,7 @@ BOOL CheckPassword()
 		MessageBox(0,"Пожалуйста введите пароль для работы с программой.","Начало работы",MB_ICONQUESTION | MB_OK);
 		if (!InputPassword(TRUE)) return FALSE;
 		char Pass[20];
-		strcpy(Pass,Password);
+		strcpy_s(Pass,20,Password);
 		MessageBox(0,"Пожалуйста введите еще раз пароль для работы с программой.","Начало работы",MB_ICONQUESTION | MB_OK);
 		if (!InputPassword(TRUE)) return FALSE;
 		if (strcmp(Password,Pass))

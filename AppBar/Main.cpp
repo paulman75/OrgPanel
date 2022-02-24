@@ -59,7 +59,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpstrCmdLine, int
 		if (CreateDirectory(MainBarDir,NULL))
 		{
 			char* OldDir=(char*)malloc(300);
-			strcpy(OldDir,MainDir);
+			strcpy_s(OldDir,300,MainDir);
 			MyMoveFile(OldDir,MainBarDir,NOTEBOOK_FILE);
 			MyMoveFile(OldDir,MainBarDir,NOTEPAD_FILE);
 			MyMoveFile(OldDir,MainBarDir,DNEV_FILE);
@@ -69,7 +69,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpstrCmdLine, int
 			RemoveDirectory(OldDir);
 			free(OldDir);
 		}
-		else strcpy(MainBarDir, MainDir);
+		else strcpy_s(MainBarDir, 200, MainDir);
 	}
 	lstrcat(MainBarDir,"Bar\\");
 

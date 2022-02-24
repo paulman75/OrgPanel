@@ -318,7 +318,7 @@ void UpdateIntEvent()
 	SearchNear();
 }
 
-void GetEventText(PINTEVENT pie, char* temp2)
+void GetEventText(PINTEVENT pie, char* temp2, int tempsize)
 {
 	temp2[0]=0;
 	char* tt=(char*)malloc(500);
@@ -331,9 +331,9 @@ void GetEventText(PINTEVENT pie, char* temp2)
 		DateToString(&pie->RealDate,temp2);
 		int d;
 		d=pie->RealDate.Year-Humans[Ind].BDate.Year;
-		strcat(temp2,"\r\n");
+		strcat_s(temp2, tempsize, "\r\n");
 		MakeShortName(Humans[Ind].FName[0] ? Humans[Ind].FName:NULL,Humans[Ind].OName[0] ? Humans[Ind].OName : NULL,Humans[Ind].SName[0] ? Humans[Ind].SName : NULL,tt);
-		strcat(temp2,tt);
+		strcat_s(temp2, tempsize, tt);
 		YearToString(tt,d);
 		lstrcat(temp2," ");
 		lstrcat(temp2,tt);
@@ -343,19 +343,19 @@ void GetEventText(PINTEVENT pie, char* temp2)
 		if (GetDeloByID(pie->ID2, &dl)==-1) return;
 		DateToString(&dl.begDate,temp2);
 		DateToString(&dl.endDate,tt);
-		strcat(temp2," - ");
-		strcat(temp2,tt);
-		strcat(temp2,"\r\n");
-		strcat(temp2,dl.Text);
+		strcat_s(temp2, tempsize, " - ");
+		strcat_s(temp2, tempsize, tt);
+		strcat_s(temp2, tempsize, "\r\n");
+		strcat_s(temp2, tempsize, dl.Text);
 		break;
 	case ID_EVENT:
 		TEVENT ev;
 		if (GetEventByID(pie->ID2, &ev)==-1) return;
 		if (!ev.bHoliday && GetDayColor(&pie->RealDate)) return;
 		DateToString(&pie->RealDate,temp2);
-		strcat(temp2,"\r\n");
+		strcat_s(temp2, tempsize, "\r\n");
 		wsprintf(tt,"%.02d:%.02d\r\n%s",ev.Time.Hour,ev.Time.Min,ev.Text);
-		strcat(temp2,tt);
+		strcat_s(temp2, tempsize, tt);
 		break;
 	}
 	free(tt);
@@ -368,7 +368,7 @@ void UpdateEvInfo(HWND hDlg)
 	SetWindowText(GetDlgItem(hDlg,IDC_STATICEV),cEvTit[ie.type]);
 	char *temp=(char*)malloc(1000);
 
-	GetEventText(&ie,temp);
+	GetEventText(&ie,temp, 1000);
 
 	SetWindowText(GetDlgItem(hDlg,IDC_EDITEV),temp);
 	free(temp);
@@ -388,7 +388,7 @@ BOOL FAR PASCAL OnEventDlgProc(HWND hDlg, unsigned message, WPARAM wParam, LPARA
 	case WM_INITDIALOG:
 		char* tit;
 		tit=(char*)malloc(100);
-		strcpy(tit,"События");
+		strcpy_s(tit,100,"События");
 		if (LastPrEvent>0)
 			wsprintf(tit,"%s (%d)",tit,LastPrEvent+1);
 		SetWindowText(hDlg,tit);

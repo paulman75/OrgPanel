@@ -40,7 +40,16 @@ CFolderSwitch::CFolderSwitch(HWND Owner)
 {
 	FValue=1;
 	FMax=5;
-		WNDCLASS   wc;
+	IncPause = 0;
+	LBut = NULL;
+	RBut = NULL;
+	LPressed = false;
+	RPressed = false;
+	TimerId = 0;
+	hMenu = NULL;
+	hToolTip = NULL;
+	hWnd = NULL;
+	WNDCLASS   wc;
 		wc.lpszMenuName		= NULL;
 		wc.lpszClassName	= "FolderSwitch";
         wc.hInstance        = hInstance;
@@ -114,7 +123,7 @@ DrawLine(Press,hdc,hpnColor1,hGrayPen,1,rc.bottom,1,1,rc.right,1);
 DrawLine(Press,hdc,hpnBlack,hWhitePen,0,rc.bottom-1,rc.right-1,rc.bottom-1,rc.right-1,0);
 DrawLine(Press,hdc,hGrayPen,hpnColor1,1,rc.bottom-2,rc.right-2,rc.bottom-2,rc.right-2,1);
 POINT poi[7]; 
-BYTE delta;
+LONG delta;
 if (Press) delta=2;
 else delta=0;
 if (Left)

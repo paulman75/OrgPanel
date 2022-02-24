@@ -240,8 +240,8 @@ void InitProc()
   yTit=0;
   hBar=new CAppBar(BarhWnd);
   hBar->bNeedTitle=BarCon.TitShow;
-  hBar->BarHeight=FullIcon+7;
-  hBar->BarWidth=FullIcon+7;
+  hBar->BarHeight = FullIcon + 7;
+  hBar->BarWidth = FullIcon + 7;
   hBar->SetAutoHide(BarCon.AutoHide);
   hBar->SetEdge(BarCon.Edge);
   hBar->SetSpeed(BarCon.Speed,BarCon.Speed);
@@ -251,6 +251,11 @@ void InitProc()
   Switch->UpdateToolTip();
   hBar->RegisterBar();
 	MenuWnd=NULL;
+	if (BarCon.Edge == ABE_DESKTOP)
+	{
+		SetWindowPos(hBar->GetMainWindow(), HWND_TOPMOST, BarCon.DesktopX , BarCon.DeskTopY , 0, 0, SWP_NOSIZE | SWP_NOACTIVATE);
+	}
+
 	bPassInputed=FALSE;
 }
 
@@ -591,7 +596,7 @@ LONG FAR PASCAL BarWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		switch (LOWORD(wParam)) 
 		{
 		case ID_AUTOHIDE:
-			hBar->SetAutoHide(!hBar->GetAutoHide());
+			hBar->SetAutoHide(hBar->GetAutoHide()==false);
 			BarCon.AutoHide=hBar->GetAutoHide();
 			SetAutoHideChecked(hMenu);
 			SaveOptions(&BarCon);

@@ -300,7 +300,7 @@ void RefreshUnit()
 	while (nUnit!=NULL)
 	{
 		HDC dc=nUnit->ButImage? nUnit->ButImage->hdc : NULL;
-		UnitBox->AddItem(nUnit->Caption->Text,!nUnit->Hidden,dc);
+		UnitBox->AddItem(nUnit->Caption->Text,nUnit->Hidden==false,dc);
 		nUnit=nUnit->NextUnit;
 	}
 	UnitBox->EndUpdate();
@@ -348,7 +348,7 @@ void UpdateFolderBox()
 void UpdateTimeSyncLabel()
 {
 	ReadRegistry("LastTimeUpdate",(LPBYTE)&buf,1000);
-	if (!lstrlen(buf)) strcpy(buf,"не синхронизировалось");
+	if (!lstrlen(buf)) strcpy_s(buf,1000,"не синхронизировалось");
 	SendMessage(GetDlgItem(hOptDialog,IDC_STATICTIME),WM_SETTEXT,0,(LPARAM)buf);
 }
 
@@ -580,11 +580,11 @@ void OnButOff()
 	SoundSelect=NULL;
 	BarCon.bCuckoo=FALSE;
 	BarCon.Sounds=FALSE;
-	strcpy(BarCon.DoFileName,"");
-	strcpy(BarCon.EventFileName,"");
-	strcpy(BarCon.RovFileName,"");
-	strcpy(BarCon.HourFileName,"");
-	strcpy(BarCon.HalfHourFileName,"");
+	strcpy_s(BarCon.DoFileName,200,"");
+	strcpy_s(BarCon.EventFileName,200,"");
+	strcpy_s(BarCon.RovFileName,200,"");
+	strcpy_s(BarCon.HourFileName,200,"");
+	strcpy_s(BarCon.HalfHourFileName,200,"");
 	OptionToScreen();
 }
 
@@ -682,7 +682,7 @@ BOOL FAR PASCAL IntDialogProc(HWND hDlg, unsigned message, WPARAM wParam, LPARAM
 		{
 			ActUnitInd=(byte)LOWORD(wParam);
 			UpdateActUnit();
-			ActUnit->Hidden=!(BOOL)lParam;
+			ActUnit->Hidden=lParam==0;
 			ActUnit->ParentFolder->Modified=TRUE;
 			PlaceIcon();
 			InvalidateRect(BarhWnd,NULL,TRUE);
@@ -771,7 +771,7 @@ BOOL FAR PASCAL OptionWndProc(HWND hDlg, unsigned message, WPARAM wParam, LPARAM
 		{
 			LPNMHDR nmh;
 			nmh=(LPNMHDR)lParam;
-			if (nmh->code==TCN_SELCHANGE) 
+			if (nmh->code== static_cast<unsigned __int64>TCN_SELCHANGE)
 			{
 				i=SendMessage(nmh->hwndFrom,TCM_GETCURSEL,0,0);
 				UpdateDialog(i,hDlg);

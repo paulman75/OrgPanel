@@ -122,6 +122,9 @@ FHorz=Horz;
 FirstPos=0;
 KolTips=0;
 FirstButton=NULL;
+ActiveButton = NULL;
+ClickButton = NULL;
+hWnd = NULL;
 TimerID=0;
 Pressed=FALSE;
 hToolTipWnd=hToolTip;
@@ -273,10 +276,10 @@ void CToolBar::DrawButton(PToolButton b, HDC hdc)
 	}
 	BITMAPINFOHEADER bit;
 	GetObject(b->hBit,sizeof(bit),&bit);
-	char ddx=(FButSize-bit.biWidth/2)/2;
-	char ddy=(FButSize-bit.biHeight)/2;
-	char dd=b->State==1 ? 1:0;
-	if (b->Enable) DrawBitmap(hdc,b->hBit,rc.left+ddx+dd,rc.top+ddy+dd);
+	LONG ddx=(FButSize-bit.biWidth/2)/2;
+	LONG ddy=(FButSize-bit.biHeight)/2;
+	WORD dd=b->State==1 ? 1:0;
+	if (b->Enable) DrawBitmap(hdc,b->hBit, rc.left+ddx+dd,rc.top+ddy+dd);
 	else DrawState(hdc, NULL, NULL, (LPARAM)b->hBit, NULL, rc.left+dd+ddx, rc.top+dd+ddy, bit.biWidth/2, bit.biHeight, DST_BITMAP |DSS_DISABLED);
 	if (c) ReleaseDC(hWnd,hdc);
 }

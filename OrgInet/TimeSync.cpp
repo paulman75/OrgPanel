@@ -8,7 +8,8 @@
 
 HWND g_hDlg;
 extern HINSTANCE hInstance;
-char Server[80][40];
+const int SERVER_SIZE = 40;
+char Server[80][SERVER_SIZE];
 int CurrentServer;
 int FirstReqServer;
 int ServerCount;
@@ -142,11 +143,11 @@ LONGLONG OffsetMillisecondsSince1900(LONGLONG correction)
 
 		FormatMillisecondsSince1900(time, s2);
 		WriteBinToReg("LastTimeBin",(LPBYTE)&time,sizeof(time));
-		strcpy(s1,"Сейчас: ");
-		strcat(s1,s2);
+		strcpy_s(s1,200,"Сейчас: ");
+		strcat_s(s1,200,s2);
 		MillisecondsToText(Corr, s3);
-		strcat(s1," Корректировка: ");
-		strcat(s1,s3);
+		strcat_s(s1,200," Корректировка: ");
+		strcat_s(s1,200,s3);
 		AddTextToRichEdit(ID_RICH,s1);
 		wsprintf(s1,"%s на %s",s2,s3);
 		WriteStringToReg("LastTimeUpdate",s1);
@@ -247,7 +248,7 @@ void MakeTimeStart()
 
 void AddServer(char* name)
 {
-	strcpy(Server[ServerCount++],name);
+	strcpy_s(Server[ServerCount++], SERVER_SIZE,name);
 }
 
 BOOL __stdcall InetTimeSync(HWND hwnd, BOOL bShow)
