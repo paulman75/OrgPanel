@@ -28,8 +28,13 @@ void CFolderSwitch::UpdatePosition(WORD Left,WORD Top,byte Width,byte Height,byt
 {
 	FMax=Max;
 	byte ButW;
-	if (Width>35) ButW=15;
-	else ButW=12;
+	if (Width > 45) {
+		ButW = 25; bIsLarge = true;
+	}
+	else
+	{
+		ButW = 15; bIsLarge = false;
+	}
 	MoveWindow(hWnd,Left,Top,Width,Height,TRUE);
 	MoveWindow(LBut,0,0,ButW,Height,TRUE);
 	MoveWindow(RBut,Width-ButW,0,ButW,Height,TRUE);
@@ -124,8 +129,8 @@ DrawLine(Press,hdc,hpnBlack,hWhitePen,0,rc.bottom-1,rc.right-1,rc.bottom-1,rc.ri
 DrawLine(Press,hdc,hGrayPen,hpnColor1,1,rc.bottom-2,rc.right-2,rc.bottom-2,rc.right-2,1);
 POINT poi[7]; 
 LONG delta;
-if (Press) delta=2;
-else delta=0;
+if (Press) delta= bIsLarge ? 5 :2;
+else delta= bIsLarge ? 3 : 0;
 if (Left)
 {
 	poi[0].x=2+delta;   

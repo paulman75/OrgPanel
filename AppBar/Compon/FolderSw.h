@@ -7,6 +7,7 @@ protected:
 	 HWND	hToolTip;
 	 WORD FValue;
 	 WORD FMax;
+	 BOOL bIsLarge;
 	 void UpdateValue();
 	 void DeleteToolTip();
 	 BOOL LPressed,RPressed;

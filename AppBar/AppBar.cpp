@@ -337,7 +337,7 @@ FullBarWidth=BarWidth;
 if (FEdge==ABE_DESKTOP) 
 {
         Registered=TRUE;
-        SetWindowPos(Main_hwnd, HWND_TOPMOST, 0, 0, FWidthOnDesktop, FHeightOnDesktop, SWP_NOMOVE | SWP_NOACTIVATE);
+        SetWindowPos(Main_hwnd, BarCon.AlwaysOnTop ? HWND_TOPMOST : 0, 0, 0, FWidthOnDesktop, FHeightOnDesktop, SWP_NOMOVE | SWP_NOACTIVATE);
         return; /*BarCon.AlwaysOnTop ? HWND_TOPMOST : 0*/
 }
 if (Registered) return;

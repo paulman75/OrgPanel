@@ -10,6 +10,7 @@
 #include "windows.h"
 #include <winres.h>
 
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -151,6 +152,8 @@ IDI_ICON4               ICON                    "Timer01.ico"
 TIMER                   ICON                    "Watch02.ico"
 
 IDI_ICON5               ICON                    "icon5.ico"
+
+NULL64                  ICON                    "NULL64.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////

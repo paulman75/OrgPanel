@@ -810,6 +810,7 @@ void UserInfoToScreen(HWND Mainh, BOOL pbToActiveFolder)
 	bToActiveFolder=pbToActiveFolder;
 	bLargeIcons=BarCon.LargeIcons;
 	NeedSaveMainBitmap=FALSE;
+	BOOL bAlwaysOnTop = BarCon.AlwaysOnTop;
 	DialogBox(hInstance, "OPTION", Mainh, (DLGPROC)OptionWndProc);
 	BOOL bl=(BarCon.LargeIcons!=bLargeIcons);
 	BarCon.LargeIcons=bLargeIcons;
@@ -819,6 +820,7 @@ void UserInfoToScreen(HWND Mainh, BOOL pbToActiveFolder)
 	SaveBarStruct();
 	if (NeedSaveMainBitmap) SaveMainBitmap();
 	if (bl) UpdateIconSize();
+	if (bAlwaysOnTop != BarCon.AlwaysOnTop) UpdateAlwaysOnTop();
 	BarUsePassword();
 	SaveOptions(&BarCon);
 	ConfigChange(DiaryWindow);

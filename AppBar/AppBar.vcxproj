@@ -175,6 +175,8 @@
     <CustomBuild Include="Res\32767.cur" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\icon9.ico" />
+    <Image Include="..\..\..\NULL64.ico" />
     <Image Include="Res\bitmap1.bmp" />
     <Image Include="Res\bitmap2.bmp" />
     <Image Include="Res\bitmap3.bmp" />
@@ -193,6 +195,7 @@
     <Image Include="Res\icon2.ico" />
     <Image Include="Res\icon5.ico" />
     <Image Include="Res\icon6.ico" />
+    <Image Include="Res\icon7.ico" />
     <Image Include="Res\imen.bmp" />
     <Image Include="Res\logo.bmp" />
     <Image Include="Res\logo2.BMP" />

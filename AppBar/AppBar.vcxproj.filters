@@ -240,6 +240,15 @@
     <Image Include="Res\zzNSuDF6.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Res\icon7.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\NULL64.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\icon9.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Res\32766.cur">

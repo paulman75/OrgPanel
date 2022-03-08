@@ -11,5 +11,6 @@ void	BarUsePassword();
 void SetSwitchValue(int Ind);
 void RepaintBar();
 void SetAlpha(byte pAlpha);
+void UpdateAlwaysOnTop();
 
 #endif

@@ -149,15 +149,16 @@ void CalcIconSize()
 {
 	if (BarCon.LargeIcons)
 	{
-		bIconSize=32;
+		bIconSize=64;
 		IconBorder=4;
+		FullIcon = 71;
 	}
 	else 
 	{
-		bIconSize=16;
+		bIconSize=32;
 		IconBorder=5;
+		FullIcon = 44;
 	}
-	FullIcon=bIconSize+2*IconBorder-2;
 }
 
 void UpdateIconSize()
@@ -253,7 +254,7 @@ void InitProc()
 	MenuWnd=NULL;
 	if (BarCon.Edge == ABE_DESKTOP)
 	{
-		SetWindowPos(hBar->GetMainWindow(), HWND_TOPMOST, BarCon.DesktopX , BarCon.DeskTopY , 0, 0, SWP_NOSIZE | SWP_NOACTIVATE);
+		SetWindowPos(hBar->GetMainWindow(), BarCon.AlwaysOnTop ? HWND_TOPMOST : 0, BarCon.DesktopX , BarCon.DeskTopY , 0, 0, SWP_NOSIZE | SWP_NOACTIVATE);
 	}
 
 	bPassInputed=FALSE;
@@ -262,6 +263,11 @@ void InitProc()
 void ShowOptions(BOOL Always)
 {
     if ((BarCon.FName[0]==0) || (Always)) UserInfoToScreen(BarhWnd,FALSE);
+}
+
+void UpdateAlwaysOnTop()
+{
+	SetWindowPos(hBar->GetMainWindow(), BarCon.AlwaysOnTop ? HWND_TOPMOST : HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
 }
 
 void ExitFromProgram()
@@ -348,6 +354,19 @@ DeleteObject(hb);*/
 HPEN hOldPen=(HPEN)SelectObject(wdc,hpnColor1);
 
 SelectObject(wdc,hGrayPen);
+if (hBar->MoveEdge == ABE_DESKTOP)
+{
+	if (ActiveFolder)
+	{
+		SelectObject(wdc, hMainFont);
+		SetBkMode(wdc, TRANSPARENT);
+		SIZE siz;
+		GetTextExtentPoint32(wdc, ActiveFolder->Caption->Text, strlen(ActiveFolder->Caption->Text), &siz);
+		SetTextColor(wdc, ActiveFolder->TitColor);
+
+		TextOut(wdc, 10, 5, ActiveFolder->Caption->Text, strlen(ActiveFolder->Caption->Text));
+	}
+}
 if (hBar->GetTitleVisible())
 {
 	int dx=0;

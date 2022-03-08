@@ -124,7 +124,7 @@ nUnit->IconIndex=0;
 nUnit->NextUnit=NULL;
 nUnit->Hidden=FALSE;
 nUnit->ButImage=NULL;
-nUnit->SmallImage=NULL;
+nUnit->BigImage=NULL;
 
 onFolder->Modified=TRUE;
 PlaceIcon();
@@ -235,9 +235,9 @@ WORD FolderBitmapToMain(PBarFolder fol, HDC bDC, WORD Index)
 	while (nUnit!=NULL)
 	{
 		if (nUnit->ButImage!=NULL) 
-			BitBlt(bDC,Index*32,0,32,32,nUnit->ButImage->hdc,0,0,SRCCOPY);
-		if (nUnit->SmallImage!=NULL) 
-			BitBlt(bDC,Index*32,32,16,16,nUnit->SmallImage->hdc,0,0,SRCCOPY);		
+			BitBlt(bDC,Index*64,0,32,32,nUnit->ButImage->hdc,0,0,SRCCOPY);
+		if (nUnit->BigImage!=NULL) 
+			BitBlt(bDC,Index*64,32,64,64,nUnit->BigImage->hdc,0,0,SRCCOPY);		
 		Index++;
 		nUnit=nUnit->NextUnit;
 	}
@@ -255,7 +255,7 @@ void SaveMainBitmap()
 		nFolder=nFolder->NextFolder;
 	}
 	if (kol==0) return;
-	CMyBitmap* Bit=new CMyBitmap(kol*32,48);
+	CMyBitmap* Bit=new CMyBitmap(kol*64,64+32);
 	kol=FolderBitmapToMain(MainFolder,Bit->hdc,0);
 	nFolder=FirstFolder;
 	while (nFolder!=NULL) 
@@ -293,14 +293,17 @@ void BitmapToUnitFromIcon(BarUnit* uni)
 	HICON hIcon=NULL;
 	HICON hSmall=NULL;
 	if (*uni->IconPath=="") ;
-		else ExtractIconEx(uni->IconPath->Text,uni->IconIndex,&hIcon,&hSmall,1);
+		else ExtractIconEx(uni->IconPath->Text,uni->IconIndex,&hIcon,0,1);
+	unsigned int pii;
+	int res = PrivateExtractIcons(uni->IconPath->Text, 0, 64, 64, &hSmall, &pii, 1, 16);
 	if (hIcon==NULL) hIcon=LoadIcon(hInstance,"NULLICON");
-	if (hSmall==NULL) hSmall=LoadIcon(hInstance,"NULL2");
-    
+	if (hSmall==NULL) hSmall=LoadIcon(hInstance,"NULL64");
+  
+        /// ...
 	uni->ButImage=new CMyBitmap(32,32);
 	DrawIcon(uni->ButImage->hdc,0,0,hIcon);
-	uni->SmallImage=new CMyBitmap(16,16);
-	DrawIconEx(uni->SmallImage->hdc,0,0,hSmall,16,16,0,NULL,DI_NORMAL);
+	uni->BigImage=new CMyBitmap(64,64);
+	DrawIconEx(uni->BigImage->hdc,0,0,hSmall,64,64,0,NULL,DI_NORMAL);
 	DeleteObject(hSmall);
 	DeleteObject(hIcon);
 }
@@ -323,7 +326,7 @@ BarUnit* LoadUnit(BarUnit* PrevUnit,PBarFolder fol,HANDLE Fil,LPWORD pIndex,HDC 
 		*uni->Caption="";
 		*uni->IconPath="";
 		uni->ButImage=NULL;
-		uni->SmallImage=NULL;
+		uni->BigImage=NULL;
 		if (ll==254)//Версия с именами сплиттеров
 		{
 			ZeroMemory(buf2,230);
@@ -380,9 +383,9 @@ BarUnit* LoadUnit(BarUnit* PrevUnit,PBarFolder fol,HANDLE Fil,LPWORD pIndex,HDC 
 	if (cc!=NULL) 
 	{
 		uni->ButImage=new CMyBitmap(32,32);
-		BitBlt(uni->ButImage->hdc,0,0,32,32,cc,(*pIndex)*32,0,SRCCOPY);
-		uni->SmallImage=new CMyBitmap(16,16);
-		BitBlt(uni->SmallImage->hdc,0,0,16,16,cc,(*pIndex)++*32,32,SRCCOPY);
+		BitBlt(uni->ButImage->hdc,0,0,32,32,cc,(*pIndex)*64,0,SRCCOPY);
+		uni->BigImage=new CMyBitmap(64,64);
+		BitBlt(uni->BigImage->hdc,0,0,64,64,cc,(*pIndex)++*64,32,SRCCOPY);
 	}
 	return uni;
 }
@@ -454,32 +457,36 @@ void IconPosition(CToolBar2* bar, BarUnit* nn,LPPOINT Poi, byte iEdge)
 	while (nn!=NULL) 
 	{
         if (!nn->Hidden) 
-			bar->AddButton(nn->Caption->Text,BarCon.LargeIcons ? nn->ButImage: nn->SmallImage,(LPVOID)nn, nn->Splitter);
+			bar->AddButton(nn->Caption->Text,BarCon.LargeIcons ? nn->BigImage: nn->ButImage,(LPVOID)nn, nn->Splitter);
         nn=nn->NextUnit;
 	}
 	bar->EndUpdate();
 }
 
-byte GetActiveUnitKol(PBarFolder fol)
+WORD GetFolderWidth(PBarFolder fol)
 {
 	if (fol==NULL) return 0;
 	nUnit=fol->FirstUnit;
-	byte res=0;
+	WORD res=0;
 	while (nUnit!=NULL)
 	{
-		if (!nUnit->Hidden) res++;
+		if (!nUnit->Hidden)
+		{
+			if (nUnit->Splitter) res += 10 + 3;
+			else res += (FullIcon + 3);
+		}
 		nUnit=nUnit->NextUnit;
 	}
 	return res;
 }
 
-byte GetMaxUnitKol()
+WORD GetMaxUnitKol()
 {
-	byte ires = 0;
+	WORD ires = 0;
 	PBarFolder pfol = FirstFolder;
 	while (pfol)
 	{
-		byte icou = GetActiveUnitKol(pfol);
+		WORD icou = GetFolderWidth(pfol);
 		if (icou > ires) { ires = icou; }
 		pfol = pfol->NextFolder;
 	}
@@ -500,17 +507,18 @@ if (hBar->MoveEdge==ABE_TOP || hBar->MoveEdge==ABE_BOTTOM)
         Hor=TRUE;
 }
 WORD w=100;
-byte KolMain=GetActiveUnitKol(MainFolder);
-//byte KolFol=GetActiveUnitKol(ActiveFolder);
-byte KolFol = GetMaxUnitKol();
-if (hBar->MoveEdge==ABE_DESKTOP)
+WORD MainWidth= GetFolderWidth(MainFolder);
+WORD MaxFolWidth = GetMaxUnitKol();
+if (hBar->MoveEdge == ABE_DESKTOP)
 {
-        w=KolMain*(FullIcon+2)+(FullIcon+2)+10;
-        if (KolFol*(FullIcon+2)>w) w=KolFol*(FullIcon+2);
-        w=w+15;
+	w = (MainWidth + MaxFolWidth) + (BarCon.LargeIcons ? 105 : 65) ;// +(FullIcon + 2);
+//        if (KolFol*(FullIcon+2)>w) w=KolFol*(FullIcon+2);
+        //w=w+5;
         hBar->SetWidthOnDesktop(w);
-        pt.x=(w/2)-((KolMain*(FullIcon+2)+FullIcon+12)/2);
-        pt.y=19;
+//		pt.x = 2;// (w / 2) - ((KolMain * (FullIcon + 2) + FullIcon + 12) / 2);
+//        pt.y=19;
+		pt.y = 3 + hBar->YTitle + 20;
+		pt.x = 5;
         Hor=TRUE;
 }
 nUnit=MainFolder->FirstUnit;
@@ -532,15 +540,15 @@ RECT rc;
 GetClientRect(MainBar->GetHWND(),&rc);
 if (Hor) pt.x+=rc.right-rc.left;
 else pt.y+=rc.bottom-rc.top;
-if (hBar->MoveEdge==ABE_DESKTOP) pt.y-=2;
+//if (hBar->MoveEdge==ABE_DESKTOP) pt.y-=2;
 Switch->UpdatePosition((WORD)(pt.x+Hor*FullIcon/5),(WORD)(pt.y+(1-Hor)*FullIcon/5-1),FullIcon,FullIcon+4,n,TRUE);
 if (Hor) pt.x+=(WORD)(FullIcon*1.4);  
 else pt.y+=(WORD)(FullIcon*1.4);
-if (hBar->MoveEdge==ABE_DESKTOP)
+/*if (hBar->MoveEdge == ABE_DESKTOP)
 {
         pt.x=w/2-KolFol*(FullIcon+2)/2;
         pt.y=60;
-}
+}*/
 nUnit=ActiveFolder->FirstUnit;
 IconPosition(FolderBar,nUnit,&pt,hBar->MoveEdge);
 InvalidateRect(BarhWnd, NULL, TRUE);
@@ -1127,7 +1135,7 @@ SaveBarStruct();
 BarUnit::BarUnit()
 {
 ButImage=NULL;
-SmallImage=NULL;
+BigImage=NULL;
 Splitter = NULL;
 ParentFolder = NULL;
 PrevUnit = NULL;
@@ -1147,10 +1155,10 @@ void BarUnit::DeleteBitmap()
 		delete ButImage;
 		ButImage=NULL;
 	}
-	if (SmallImage!=NULL) 
+	if (BigImage!=NULL) 
 	{
-		delete SmallImage;
-		SmallImage=NULL;
+		delete BigImage;
+		BigImage=NULL;
 	}
 }
 

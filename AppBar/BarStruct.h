@@ -51,7 +51,7 @@ class BarUnit
 private:
 public:
 	   CMyBitmap*	ButImage;
-	   CMyBitmap*	SmallImage;
+	   CMyBitmap*	BigImage;
        CMyString*	FilePath;
        CMyString*	Caption;
 	   CMyString*	IconPath;

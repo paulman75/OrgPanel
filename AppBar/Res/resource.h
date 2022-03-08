@@ -24,6 +24,7 @@
 #define IDB_BITPRAV                     205
 #define IDI_ICON5                       206
 #define IDB_BITMAP6                     208
+#define IDI_ICON8                       212
 #define IDC_MESSAGELABEL                1014
 #define IDC_PARAMLABEL                  1015
 #define ID_TODAY                        1017
@@ -122,7 +123,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        210
+#define _APS_NEXT_RESOURCE_VALUE        215
 #define _APS_NEXT_COMMAND_VALUE         40019
 #define _APS_NEXT_CONTROL_VALUE         1091
 #define _APS_NEXT_SYMED_VALUE           101
