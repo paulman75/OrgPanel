@@ -72,3 +72,4 @@ EXPORTS
 	WriteStringToReg
 	WriteDWordToReg
 	WriteBinToReg
+	base64_encode

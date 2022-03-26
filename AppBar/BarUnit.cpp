@@ -19,6 +19,7 @@ CAppBar* hBar=NULL;
 CFolderSwitch*	Switch;
 extern HPEN hpnColor1,hWhitePen,hGrayPen, hpnBlack;
 extern HFONT		hMainFont;
+extern HFONT		hMainBigFont;
 HFONT	hVertFont;
 extern HINSTANCE	hInstance;		  // Global instance handle for application
 extern BarUnit*		nUnit;
@@ -354,11 +355,11 @@ DeleteObject(hb);*/
 HPEN hOldPen=(HPEN)SelectObject(wdc,hpnColor1);
 
 SelectObject(wdc,hGrayPen);
-if (hBar->MoveEdge == ABE_DESKTOP)
+if (hBar->MoveEdge == ABE_DESKTOP&&BarCon.TitShow)
 {
 	if (ActiveFolder)
 	{
-		SelectObject(wdc, hMainFont);
+		SelectObject(wdc, BarCon.LargeIcons ? hMainBigFont : hMainFont);
 		SetBkMode(wdc, TRANSPARENT);
 		SIZE siz;
 		GetTextExtentPoint32(wdc, ActiveFolder->Caption->Text, strlen(ActiveFolder->Caption->Text), &siz);

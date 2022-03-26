@@ -24,6 +24,7 @@ HPEN hpnColor1,hGrayPen,hWhitePen,hpnBlack;
 HPEN	hpnBlue,hpnRed,hpnGreen,hpnBlue2;
 HBRUSH	hGreenBrush,hBlackBrush,hSilverBrush,hWhiteBrush,hBlueBrush;
 HFONT	hMainFont;
+HFONT	hMainBigFont;
 char	buf[1000],buf2[230];
 
 char MainBarDir[200];
@@ -97,6 +98,7 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR lpstrCmdLine, int
             return(0);
 
 	hMainFont=CreateFontIndirect(&lf);
+	hMainBigFont = CreateFontIndirect(&lfBig);
 	hpnColor1 = CreatePen(PS_SOLID,1,0x0e0e0e0);
 	hWhitePen = CreatePen(PS_SOLID,1,0x0ffffff);
 	hGrayPen = CreatePen(PS_SOLID,1,0x808080);

@@ -56,8 +56,8 @@ PBarFolder FindBarFolder(WORD x,WORD y)
 RECT src;
 nFolder=MainFolder;
 GetClientRect(Switch->hWnd,&src);
-MapWindowPoints(Switch->hWnd,BarhWnd,(LPPOINT)&src,2);
-if (hBar->MoveEdge==ABE_BOTTOM || hBar->MoveEdge==ABE_TOP) 
+MapWindowPoints(Switch->hWnd,NULL,(LPPOINT)&src,2);
+if (hBar->MoveEdge==ABE_BOTTOM || hBar->MoveEdge==ABE_TOP || hBar->MoveEdge == ABE_DESKTOP)
 {
         if (x>src.left) nFolder=ActiveFolder;
 } else
@@ -277,7 +277,43 @@ void BitmapToUnitFromIcon(BarUnit* uni)
 	GetLnkData(&nLnk);
 	*uni->IconPath=nLnk.strIconLocation;
 	uni->IconIndex=nLnk.nIconIndex;
+	/*ExtractFileExt(uni->strPath->Text, buf2);
 
+	if (lstrcmpi(buf2, ".msc") == 0)
+	{
+		//Читаем иконку из msc файла
+		HANDLE	hFile;
+		if ((hFile = CreateFile(uni->strPath->Text, GENERIC_READ, 0, NULL, OPEN_EXISTING,
+			FILE_ATTRIBUTE_NORMAL, 0)) != INVALID_HANDLE_VALUE)
+		{
+			DWORD dwSize = GetFileSize(hFile, NULL);
+			if (dwSize != INVALID_FILE_SIZE)
+			{
+				char* filbuf = (char*)malloc(dwSize);
+
+				DWORD dwd;
+				BOOL rf = ReadFile(hFile, filbuf, dwSize, &dwd, NULL);
+				char* lbig=strstr(filbuf, "CONSOLE_FILE_ICON_LARGE");
+				lbig = strstr(lbig, "\">");
+				lbig++;
+				lbig++;
+				if (lbig[0] == '\r') lbig++;
+				if (lbig[0] == '\n') lbig++;
+				char* lend = strstr(lbig, "</Binary>");
+				if (lend) lend[0] = char(0);
+				int ilen64 = lstrlen(lbig);
+				char* imbuf = (char*)malloc(ilen64*2);
+				size_t ilen;
+
+				imbuf = base64_encode(lbig, ilen64, &ilen);
+
+				free(filbuf);
+			}
+			// Закрываем файл
+			CloseHandle(hFile);
+		}
+	}
+		*/
   if (*uni->IconPath=="") 
   {
 	ExtractFileExt(uni->FilePath->Text,buf2);
@@ -295,7 +331,7 @@ void BitmapToUnitFromIcon(BarUnit* uni)
 	if (*uni->IconPath=="") ;
 		else ExtractIconEx(uni->IconPath->Text,uni->IconIndex,&hIcon,0,1);
 	unsigned int pii;
-	int res = PrivateExtractIcons(uni->IconPath->Text, 0, 64, 64, &hSmall, &pii, 1, 16);
+	int res = PrivateExtractIcons(uni->IconPath->Text, uni->IconIndex, 64, 64, &hSmall, &pii, 1, 16);
 	if (hIcon==NULL) hIcon=LoadIcon(hInstance,"NULLICON");
 	if (hSmall==NULL) hSmall=LoadIcon(hInstance,"NULL64");
   
@@ -517,7 +553,7 @@ if (hBar->MoveEdge == ABE_DESKTOP)
         hBar->SetWidthOnDesktop(w);
 //		pt.x = 2;// (w / 2) - ((KolMain * (FullIcon + 2) + FullIcon + 12) / 2);
 //        pt.y=19;
-		pt.y = 3 + hBar->YTitle + 20;
+		pt.y = 3 + hBar->YTitle + 26;
 		pt.x = 5;
         Hor=TRUE;
 }

@@ -6,6 +6,7 @@
 
 extern HINSTANCE hInstance;
 extern HFONT hMainFont;
+extern HFONT hMainBigFont;
 extern HPEN hpnColor1,hWhitePen, hGrayPen,hpnBlack;
 HBRUSH		hGreenBrushFS;
 extern CFolderSwitch*	Switch;
@@ -97,7 +98,7 @@ void CFolderSwitch::DrawNumber(HDC hdc)
 	RECT rect;
 	GetClientRect(hWnd,&rect);
 	SIZE siz;
-	HFONT hf=(HFONT)SelectObject(hdc,hMainFont);
+	HFONT hf=(HFONT)SelectObject(hdc, bIsLarge ? hMainBigFont : hMainFont);
 	SetBkMode(hdc,TRANSPARENT);
 	char ch;
 	if (FValue>9)
