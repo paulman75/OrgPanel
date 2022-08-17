@@ -15,10 +15,41 @@ extern TBarConfig	BarCon;
 void	CAppBar::UpdateOnDesktop()
 {
 	if (MoveEdge!=ABE_DESKTOP) return;
+	ChangeBarRgnDesktop();
 	RECT	rc;
 	GetWindowRect(Main_hwnd,&rc);
     MoveWindow(Main_hwnd,rc.left,rc.top,FWidthOnDesktop,FHeightOnDesktop,TRUE);
 	InvalidateRect(Main_hwnd,NULL,TRUE);
+}
+
+void CAppBar::ChangeBarRgnDesktop()
+{
+	if (!FolderCnt) return;
+	GetWindowRect(Main_hwnd, &rc);
+	int j = 0;
+	ptbar[j].x = 0;				ptbar[j++].y = 0;
+	ptbar[j].x = 0;				ptbar[j++].y = FHeightOnDesktop - TitSize;
+	int oneFolderWidth = (rc.right - rc.left) / FolderCnt;
+	for (int i = 1; i <= FolderCnt; i++)
+	{
+		ptbar[j].x = oneFolderWidth *(i-1)+2;				ptbar[j++].y = FHeightOnDesktop - TitSize;
+		ptbar[j].x = oneFolderWidth *(i-1)+2+ TitSize;		ptbar[j++].y = FHeightOnDesktop;
+		ptbar[j].x = oneFolderWidth * i - 2 - TitSize;		ptbar[j++].y = FHeightOnDesktop;
+		ptbar[j].x = oneFolderWidth * i - 2;				ptbar[j++].y = FHeightOnDesktop - TitSize;
+	}
+	ptbar[j].x = rc.right - rc.left; ptbar[j++].y = FHeightOnDesktop - TitSize;
+	ptbar[j].x = rc.right - rc.left; ptbar[j++].y = 0;
+
+	if (rgn) DeleteObject(rgn);
+	rgn = CreatePolygonRgn(&ptbar[0], j, ALTERNATE);
+	SetWindowRgn(Main_hwnd, rgn, FALSE);
+	InvalidateRect(Main_hwnd, NULL, true);
+}
+
+void	CAppBar::SetFolderCnt(int New)
+{
+	FolderCnt = New;
+	ChangeBarRgnDesktop();
 }
 
 void	CAppBar::SetOpenDelay(int od)
@@ -40,7 +71,7 @@ BOOL CAppBar::GetTitleVisible()
 
 void	CAppBar::SetHeightOnDesktop(WORD New)
 {
-	FHeightOnDesktop=New;
+	FHeightOnDesktop=New+ TitSize;
 	UpdateOnDesktop();
 }
 
@@ -338,6 +369,7 @@ if (FEdge==ABE_DESKTOP)
 {
         Registered=TRUE;
         SetWindowPos(Main_hwnd, BarCon.AlwaysOnTop ? HWND_TOPMOST : 0, 0, 0, FWidthOnDesktop, FHeightOnDesktop, SWP_NOMOVE | SWP_NOACTIVATE);
+		ChangeBarRgnDesktop();
         return; /*BarCon.AlwaysOnTop ? HWND_TOPMOST : 0*/
 }
 if (Registered) return;
@@ -404,87 +436,87 @@ void CAppBar::AppBarQuerySetPos()
 {
 	WORD h,w;
 
-Dat.rc.top=0;
-Dat.rc.bottom=GetSystemMetrics(SM_CYSCREEN);
-Dat.rc.left=0;
-Dat.rc.right= GetSystemMetrics(SM_CXVIRTUALSCREEN);
-SHAppBarMessage(ABM_QUERYPOS,&Dat);
-w=FullBarWidth;
-h=FullBarHeight;
-if (FAutoHide) 
+Dat.rc.top = 0;
+Dat.rc.bottom = GetSystemMetrics(SM_CYSCREEN);
+Dat.rc.left = 0;
+Dat.rc.right = GetSystemMetrics(SM_CXVIRTUALSCREEN);
+SHAppBarMessage(ABM_QUERYPOS, &Dat);
+w = FullBarWidth;
+h = FullBarHeight;
+if (FAutoHide)
 {
-        h=FDelta;
-        w=FDelta;
+	h = FDelta;
+	w = FDelta;
 }
-rc=Dat.rc;
+rc = Dat.rc;
 switch (Dat.uEdge)
 {
-	case ABE_LEFT:  
-        Dat.rc.right=Dat.rc.left+FullBarWidth;
-        rc.right=rc.left+w;
-        rc.left=rc.right-FullBarWidth;
-		break;
-	case ABE_RIGHT: 
-        Dat.rc.left=Dat.rc.right-FullBarWidth;
-        rc.left=rc.right-w;
-		break;
-	case ABE_TOP:   
-        Dat.rc.bottom=Dat.rc.top+FullBarHeight;
-        rc.bottom=rc.top+h;
-        rc.top=rc.bottom-FullBarHeight;
-		break;
-	case ABE_BOTTOM: 
-        Dat.rc.top=Dat.rc.bottom-FullBarHeight;
-        rc.top=rc.bottom-w;
-		break;
+case ABE_LEFT:
+	Dat.rc.right = Dat.rc.left + FullBarWidth;
+	rc.right = rc.left + w;
+	rc.left = rc.right - FullBarWidth;
+	break;
+case ABE_RIGHT:
+	Dat.rc.left = Dat.rc.right - FullBarWidth;
+	rc.left = rc.right - w;
+	break;
+case ABE_TOP:
+	Dat.rc.bottom = Dat.rc.top + FullBarHeight;
+	rc.bottom = rc.top + h;
+	rc.top = rc.bottom - FullBarHeight;
+	break;
+case ABE_BOTTOM:
+	Dat.rc.top = Dat.rc.bottom - FullBarHeight;
+	rc.top = rc.bottom - w;
+	break;
 }
-OpenPanelX=Dat.rc.left;
-OpenPanelY=Dat.rc.top;
-Dat.rc=rc;
-SHAppBarMessage(ABM_SETPOS,&Dat);
-if ((FAutoHide) && (!SetedHide)) 
+OpenPanelX = Dat.rc.left;
+OpenPanelY = Dat.rc.top;
+Dat.rc = rc;
+SHAppBarMessage(ABM_SETPOS, &Dat);
+if ((FAutoHide) && (!SetedHide))
 {
-        Dat.lParam=1;
-        SHAppBarMessage(ABM_SETAUTOHIDEBAR,&Dat);
-        SetedHide=TRUE;
+	Dat.lParam = 1;
+	SHAppBarMessage(ABM_SETAUTOHIDEBAR, &Dat);
+	SetedHide = TRUE;
 }
-ClosePanelX=rc.left;
-ClosePanelY=rc.top;
-if ((FEdge==ABE_LEFT) || (FEdge==ABE_RIGHT)) 
-        MoveWindow(Main_hwnd,rc.left,rc.top,FullBarWidth,rc.bottom-rc.top,TRUE);
-else    MoveWindow(Main_hwnd,rc.left,rc.top,rc.right-rc.left,FullBarHeight,TRUE);
-GetWindowRect(Main_hwnd,&rc);
+ClosePanelX = rc.left;
+ClosePanelY = rc.top;
+if ((FEdge == ABE_LEFT) || (FEdge == ABE_RIGHT))
+MoveWindow(Main_hwnd, rc.left, rc.top, FullBarWidth, rc.bottom - rc.top, TRUE);
+else    MoveWindow(Main_hwnd, rc.left, rc.top, rc.right - rc.left, FullBarHeight, TRUE);
+GetWindowRect(Main_hwnd, &rc);
 }
 
-void CAppBar::AppBarCallBack (UINT uMsg, WPARAM wParam, LPARAM lParam)
+void CAppBar::AppBarCallBack(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	UINT uState;
-switch (wParam)
-{
+	switch (wParam)
+	{
 	case ABN_STATECHANGE:
-        uState=SHAppBarMessage(ABM_GETSTATE,&Dat);
-        if ((ABS_ALWAYSONTOP) && (uState==ABS_ALWAYSONTOP)) 
-        SetWindowPos(Main_hwnd,HWND_BOTTOM,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-        else SetWindowPos(Main_hwnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-	break;
+		uState = SHAppBarMessage(ABM_GETSTATE, &Dat);
+		if ((ABS_ALWAYSONTOP) && (uState == ABS_ALWAYSONTOP))
+			SetWindowPos(Main_hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+		else SetWindowPos(Main_hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+		break;
 	case ABN_FULLSCREENAPP:
-         if (lParam) 
-		 {
-                SetWindowPos(Main_hwnd,HWND_BOTTOM,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-                Timer2->Stop();
-				bFullScreen=TRUE;
-         }
-         else 
-		 {
-                SetWindowPos(Main_hwnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-                if (FAutoHide) Timer2->Start();
-				bFullScreen=FALSE;
-         }
-	break;
-	case ABN_POSCHANGED:        
+		if (lParam)
+		{
+			SetWindowPos(Main_hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+			Timer2->Stop();
+			bFullScreen = TRUE;
+		}
+		else
+		{
+			SetWindowPos(Main_hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+			if (FAutoHide) Timer2->Start();
+			bFullScreen = FALSE;
+		}
+		break;
+	case ABN_POSCHANGED:
 		AppBarQuerySetPos();
-	break;
-}
+		break;
+	}
 }
 
 void CAppBar::CheckMouseOver()
@@ -492,13 +524,16 @@ void CAppBar::CheckMouseOver()
 	POINT	pp;
 	BOOL	MOut;
 
-if(FMouseDown) 
-{
-	MouseMove();
+	if (FMouseDown)
+	{
+		MouseMove();
+		return;
+	}
+	GetCursorPos(&pp);
+	if (FEdge == ABE_DESKTOP)
+	{
 	return;
-}
-if (FEdge==ABE_DESKTOP) return;
-GetCursorPos(&pp);
+	}
 MOut=TRUE;
 GetWindowRect(Main_hwnd,&rc);
 switch (FEdge)
@@ -588,7 +623,7 @@ FAutoHide=TRUE;
 FCloseSpeed=10;
 FDelta=2;
 FEdge=ABE_RIGHT;
-FHeightOnDesktop=105;
+FHeightOnDesktop=105+ TitSize;
 FMouseDown=FALSE;
 FOpenSpeed=10;
 CanOpen=FALSE;
@@ -738,6 +773,21 @@ void CAppBar::OnDelayTimer()
 
 void CAppBar::StartMoveWindow(WORD le,WORD to)
 {
+if (MoveEdge == ABE_DESKTOP)
+{
+	POINT pp;
+	GetCursorPos(&pp);
+	GetWindowRect(Main_hwnd, &rc);
+	for (int i = 1; i <= FolderCnt; i++)
+	{
+		if ((ptbar[2 + (i - 1) * 4].x+rc.left < pp.x) && (ptbar[4 + (i - 1) * 4].x + rc.left > pp.x) && (ptbar[2 + (i - 1) * 4].y + rc.top < pp.y))
+		{
+			SendMessage(Main_hwnd, WM_APPBARCHANGEFOLDER, (WPARAM)i, 0);
+			return;
+		}
+	}
+}
+
 if (!Moveable) return;
 ChangeBarRgn(false);
 

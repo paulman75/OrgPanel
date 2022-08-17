@@ -13,6 +13,9 @@
 
 #define WM_COLORDIALOGCHANGE WM_USER+152
 
+#define WM_APPBARCHANGEFOLDER WM_USER+12
+
+
 #define	WM_LISTBOXCHECKCHANGE	WM_USER+20
 //HIWORD(wParam) - ID контрола
 //LOWORD(wParam) - индекс элемента

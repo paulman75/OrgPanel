@@ -51,6 +51,7 @@ private:
 	BOOL	CanOpen;
   	int		OpenDelay;
 	int		Direct;
+    int     FolderCnt;
     APPBARDATA	Dat;
     POINT	MovePos,StartPos;
 	HRGN	rgn;
@@ -61,14 +62,16 @@ private:
 	void	Timer1Event();
     void	EndMoveWindow();
 	void	ChangeBarRgn(BOOL bOpening);
+    void    ChangeBarRgnDesktop();
 
 public:
-	POINT	ptbar[10];
+	POINT	ptbar[30*4];
 	BOOL	bFullScreen;
 
 	void	SetWidthOnDesktop(WORD);
 	void	SetHeightOnDesktop(WORD);
-	inline WORD	GetWidthOnDesktop() {return FWidthOnDesktop;};
+    void	SetFolderCnt(int);
+    inline WORD	GetWidthOnDesktop() {return FWidthOnDesktop;};
 	byte	MoveEdge;
 	void	SetEdge(byte);
     WORD	BarWidth,BarHeight;

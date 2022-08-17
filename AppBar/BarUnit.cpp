@@ -368,6 +368,47 @@ if (hBar->MoveEdge == ABE_DESKTOP&&BarCon.TitShow)
 		TextOut(wdc, 10, 5, ActiveFolder->Caption->Text, strlen(ActiveFolder->Caption->Text));
 	}
 }
+if (hBar->MoveEdge == ABE_DESKTOP) //Рисуем названия разделов в Desktop версии 
+{
+	PBarFolder f = FirstFolder;
+	int i = 1;
+	while (f)
+	{
+		if (f != ActiveFolder)
+		{
+			RECT rc;
+			TRIVERTEX vert[2];
+			GRADIENT_RECT gRect;
+			vert[0].x = hBar->ptbar[2 + 4 * (i - 1)].x;
+			vert[0].y = hBar->ptbar[2 + 4 * (i - 1)].y;
+			vert[0].Red = GetRValue(f->BkColor) * 256;
+			vert[0].Green = GetGValue(f->BkColor) * 256;
+			vert[0].Blue = GetBValue(f->BkColor) * 256;
+			vert[0].Alpha = 0x0000;
+
+			vert[1].x = hBar->ptbar[5 + 4 * (i - 1)].x;
+			vert[1].y = hBar->ptbar[3 + 4 * (i - 1)].y;
+			vert[1].Red = GetRValue(f->BkColor2) * 256;
+			vert[1].Green = GetGValue(f->BkColor2) * 256;
+			vert[1].Blue = GetBValue(f->BkColor2) * 256;
+			vert[1].Alpha = 0x0000;
+
+			gRect.UpperLeft = 0;
+			gRect.LowerRight = 1;
+
+			GradientFill(wdc, vert, 2, &gRect, 1, GRADIENT_FILL_RECT_H);
+		}
+		SelectObject(wdc, hMainFont);
+		SetBkMode(wdc, TRANSPARENT);
+		SIZE siz;
+		GetTextExtentPoint32(wdc, f->Caption->Text, strlen(f->Caption->Text), &siz);
+		SetTextColor(wdc, f->TitColor);
+
+		TextOut(wdc, hBar->ptbar[2+4*(i-1)].x+ (hBar->ptbar[4 + 4 * (i - 1)].x- hBar->ptbar[2 + 4 * (i - 1)].x)/2-siz.cx/2, hBar->ptbar[2 + 4 * (i - 1)].y, f->Caption->Text, strlen(f->Caption->Text));
+		i++;
+		f = f->NextFolder;
+	}
+}
 if (hBar->GetTitleVisible())
 {
 	int dx=0;
@@ -563,6 +604,16 @@ LONG FAR PASCAL BarWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		PlaceIcon();
 		BarCon.Edge=hBar->MoveEdge;
 		SaveOptions(&BarCon);
+		break;
+	case WM_APPBARCHANGEFOLDER:
+		ActiveFolder = FirstFolder;
+		i = 1;
+		while (i < (WORD)wParam)
+		{
+			i++;
+			ActiveFolder = ActiveFolder->NextFolder;
+		}
+		SetSwitchValue((WORD)wParam);
 		break;
 	case WM_SWITCHVALUECHANGED:
 		byte nom;

@@ -65,6 +65,18 @@ if (y>src.bottom && ActiveFolder!=NULL) nFolder=ActiveFolder;
 return nFolder;
 }
 
+void UpdateBarFolderCount()
+{
+	int cnt = 0;
+	PBarFolder f = FirstFolder;
+	while (f)
+	{
+		cnt++;
+		f = f->NextFolder;
+	}
+	hBar->SetFolderCnt(cnt);
+}
+
 void DetectDescription(LPLnk ll)
 {
 	WORD i=lstrlen(ll->strLnkPath.Text)-1;
@@ -863,6 +875,7 @@ if (MainFolder!=NULL)
 if (Bit->hdc==NULL) UpdateIcon();
 delete Bit;
 PlaceIcon();
+UpdateBarFolderCount();
 }
 
 void SaveFolderIndex(PBarFolder fol)
@@ -1003,6 +1016,7 @@ while (nFolder!=NULL)
 	nFolder=nFolder->NextFolder;
 }
 Switch->SetValue(Ind,Kol);
+UpdateBarFolderCount();
 PlaceIcon();
 }
 
@@ -1065,6 +1079,7 @@ void NewFolder()
 	SaveBarStruct();
 	SaveFolderDat();
 	Switch->SetValue(Kol,Kol);
+	UpdateBarFolderCount();
 	PlaceIcon();
 }
 
